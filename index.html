@@ -735,7 +735,7 @@
     <!-- ── NAVIGATIE ── -->
     <nav>
         <a href="index.html" class="actief">Zincafé</a>
-        <a href="filosofie-van-a-tot-z.html">Filosofie van A tot Z</a>
+        <a href="filosofie-in-vogelvlucht.html">Filosofie in Vogelvlucht</a>
         <a href="#podcast">Podcast</a>
         <a href="https://www.instituutvoortoegepastefilosofie.nl" target="_blank" rel="noopener">Ons Instituut ↗</a>
     </nav>
@@ -769,10 +769,10 @@
             <!-- Filosofie van A tot Z -->
             <div class="product-card">
                 <span class="product-icon">📖</span>
-                <span class="product-badge" style="background: #FDE8E8; color: #B91C1C;">🔒 Volgeboekt · juni 2026</span>
-                <h3>Filosofie van A tot Z</h3>
-                <p>Twee avonden over de grote vragen van de westerse filosofie. Van Aristoteles tot Žižek. <em>Deze reeks is volgeboekt.</em></p>
-                <a href="filosofie-van-a-tot-z.html" class="product-link">Bekijk de informatie →</a>
+                <span class="product-badge" style="background: #E8F5E9; color: #2E7D32;">✅ Aanmeldingen open · nieuw seizoen</span>
+                <h3>Filosofie in Vogelvlucht</h3>
+                <p>Twee avonden over de grote vragen van de westerse filosofie. Van Aristoteles tot Žižek. <em>Aanmeldingen voor het nieuwe seizoen zijn open!</em></p>
+                <a href="filosofie-in-vogelvlucht.html" class="product-link">Bekijk de informatie →</a>
             </div>
 
             <!-- Podcast -->
@@ -804,9 +804,24 @@
                     <span class="podcast-badge">Binnenkort</span>
                     <h2 style="text-align: left; margin-bottom: 1rem;">Podcast Filosofiecafé Emmen</h2>
                     <p>Sjoerd en Nathalie verschijnen binnenkort als gast in de podcast van het Filosofiecafé Emmen. Ze gaan in gesprek over zingeving, filosofie in de praktijk en wat het betekent om in een kleine gemeenschap grote vragen te stellen.</p>
-                    <div class="podcast-placeholder">
+                    <!-- PODCAST LINK: plak hier de luisterlink zodra de aflevering live is -->
+                    <!-- Stap 1: verwijder de 'podcast-placeholder' div hieronder -->
+                    <!-- Stap 2: verwijder de commentaar-tags rondom de 'podcast-player' div -->
+                    <div class="podcast-placeholder" id="podcastPlaceholder">
                         🔔 Aflevering volgt binnenkort — houd deze pagina in de gaten voor de luisterlink.
                     </div>
+                    <!--
+                    <div class="podcast-player" id="podcastPlayer" style="margin-top:1.5rem;">
+                        <a href="PLAK_HIER_DE_PODCAST_URL"
+                           target="_blank" rel="noopener"
+                           style="display:inline-flex;align-items:center;gap:0.6rem;background:var(--oranje);color:white;padding:0.85rem 1.75rem;border-radius:10px;font-weight:700;text-decoration:none;font-family:'Source Sans 3',sans-serif;transition:background 0.2s;">
+                            ▶ Luister naar de aflevering
+                        </a>
+                        <p style="margin-top:1rem;font-size:0.9rem;color:rgba(255,255,255,0.7);">
+                            Ook beschikbaar via Spotify, Apple Podcasts en andere podcastapps onder de naam <em>Filosofiecafé Emmen</em>.
+                        </p>
+                    </div>
+                    -->
                 </div>
             </div>
         </section>
@@ -842,9 +857,9 @@
 
         <!-- ── AANMELDFORMULIER ── -->
         <section>
-            <h2>Aanmelden of interesse tonen</h2>
+            <h2>Aanmelden voor nieuw seizoen</h2>
             <p style="text-align: center; margin-bottom: 2rem;">
-                Wil je meedoen met een volgende reeks, of heb je een vraag? Stuur ons een berichtje.
+                De aanmeldingen voor het nieuwe seizoen van het Zincafé (vijf avonden) en Filosofie in Vogelvlucht (twee avonden) zijn geopend. Meld je aan en wij nemen contact met je op zodra de data definitief zijn.
             </p>
             <div class="aanmeld-form">
                 <form id="aanmeldForm" action="https://formspree.io/f/mwpakbbq" method="POST">
@@ -861,12 +876,29 @@
                         <input type="tel" id="telefoon" name="telefoon">
                     </div>
                     <div class="form-group">
-                        <label for="bijeenkomst">Interesse in</label>
+                        <label for="bijeenkomst">Waarvoor wil je je aanmelden? *</label>
                         <select id="bijeenkomst" name="bijeenkomst" required>
                             <option value="">-- Maak een keuze --</option>
-                            <option value="volgend-seizoen-zincafe">Volgend seizoen Zincafé</option>
-                            <option value="filosofie-a-tot-z">Filosofie van A tot Z (juni 2026)</option>
+                            <optgroup label="Zincafé Zweeloo (vijf avonden)">
+                                <option value="zincafe-nieuw-seizoen">Zincafé – nieuw seizoen (vijf avonden)</option>
+                            </optgroup>
+                            <optgroup label="Filosofie in Vogelvlucht (twee avonden)">
+                                <option value="filosofie-vogelvlucht-nieuw">Filosofie in Vogelvlucht – nieuw seizoen (twee avonden)</option>
+                            </optgroup>
+                            <option value="beide">Beide: Zincafé én Filosofie in Vogelvlucht</option>
+                            <option value="op-de-hoogte">Houd mij op de hoogte (nog geen keuze)</option>
                             <option value="algemeen">Algemene vraag</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="groepVoorkeurWrap" style="display:none;">
+                        <label for="groepVoorkeur">Voorkeur voor avond Zincafé (optioneel)</label>
+                        <select id="groepVoorkeur" name="groepVoorkeur">
+                            <option value="">-- Geen voorkeur --</option>
+                            <option value="maandag">Maandag</option>
+                            <option value="dinsdag">Dinsdag</option>
+                            <option value="woensdag">Woensdag</option>
+                            <option value="donderdag">Donderdag</option>
+                            <option value="vrijdag">Vrijdag</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -1091,6 +1123,16 @@
         updateNextEventBanner();
         renderBijeenkomsten();
         initFormulier();
+
+        // Toon/verberg groepvoorkeur op basis van selectie
+        const bijeenkomstSelect = document.getElementById('bijeenkomst');
+        const groepWrap = document.getElementById('groepVoorkeurWrap');
+        if (bijeenkomstSelect && groepWrap) {
+            bijeenkomstSelect.addEventListener('change', function() {
+                const val = this.value;
+                groepWrap.style.display = (val === 'zincafe-nieuw-seizoen' || val === 'beide') ? 'block' : 'none';
+            });
+        }
     </script>
 
 </body>
