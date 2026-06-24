@@ -1300,25 +1300,14 @@
         }
 
         function renderBijeenkomsten() {
-            // Archief 2025–2026
+            // Archief 2025–2026 — compact, zonder groepen
             const container = document.getElementById('bijeenkomstenContainer');
             bijeenkomsten.forEach(bijeenkomst => {
                 const card = document.createElement('div');
                 card.className = 'bijeenkomst-card geweest';
-
-                const momentenHTML = bijeenkomst.momenten.map(moment => {
-                    return `
-                        <div class="groep-moment">
-                            <span class="groep-label">Groep ${moment.groep}</span>
-                            <span class="moment-datum">${formateerDatum(moment.datum)}</span>
-                            <span class="moment-status status-geweest">Afgerond</span>
-                        </div>`;
-                }).join('');
-
                 card.innerHTML = `
                     <h3>${bijeenkomst.nummer}. ${bijeenkomst.titel}</h3>
-                    <p class="thema-beschrijving">${bijeenkomst.beschrijving}</p>
-                    <div class="groep-momenten">${momentenHTML}</div>`;
+                    <p class="thema-beschrijving">${bijeenkomst.beschrijving}</p>`;
                 container.appendChild(card);
             });
         }
