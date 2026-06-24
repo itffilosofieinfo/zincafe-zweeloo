@@ -746,6 +746,100 @@
             color: rgba(255,255,255,0.4);
         }
 
+        /* ── SEIZOEN ARCHIEF TOGGLE ── */
+        .seizoen-archief {
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            padding-top: 1.5rem;
+        }
+
+        .archief-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: var(--warm-beige-donker);
+            border: 1px solid rgba(0,0,0,0.07);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.5rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--aarde-donker);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: left;
+        }
+
+        .archief-toggle:hover {
+            background: var(--oranje-tint);
+            border-color: rgba(200,112,58,0.25);
+        }
+
+        .archief-toggle[aria-expanded="true"] {
+            background: var(--oranje-tint);
+            border-color: rgba(200,112,58,0.3);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        .archief-chevron {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--oranje);
+        }
+
+        .archief-toggle[aria-expanded="true"] .archief-chevron {
+            transform: rotate(180deg);
+        }
+
+        .archief-inhoud {
+            border: 1px solid rgba(200,112,58,0.2);
+            border-top: none;
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            padding: 0 1.5rem 1.5rem;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .archief-inhoud[hidden] { display: none; }
+
+        /* Archiefkaartjes iets subtieler */
+        .archief-inhoud .bijeenkomst-card {
+            opacity: 0.75;
+        }
+
+        /* ── NIEUW SEIZOEN PLACEHOLDER CARDS ── */
+        .nieuw-seizoen-card {
+            background: white;
+            border: 2px dashed rgba(200,112,58,0.3);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nieuw-seizoen-nummer {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--oranje-tint);
+            color: var(--oranje-donker);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .nieuw-seizoen-tekst {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             header { padding: 4rem 1.5rem 5rem; }
@@ -817,7 +911,7 @@
                 <span class="product-icon">☕</span>
                 <span class="product-badge grijs">Seizoen 2025–2026 afgerond · nieuw seizoen volgt</span>
                 <h3>Zincafé Zweeloo</h3>
-                <p>Kleinschalige filosofische gesprekken over zingeving — voor iedereen in en rondom Zweeloo, gratis, in De Kapschuur.</p>
+                <p>Kleinschalige filosofische gesprekken over zingeving — voor iedereen in en rondom Zweeloo, gratis toegankelijk.</p>
                 <a href="#bijeenkomsten" class="product-link">Bekijk de bijeenkomsten →</a>
             </div>
 
@@ -899,12 +993,30 @@
         <!-- ── BIJEENKOMSTEN (wit) ── -->
         <section class="wit" id="bijeenkomsten">
             <div class="section-inner">
-                <h2>Vijf bijeenkomsten 2025–2026</h2>
-                <div class="groepen-uitleg">
-                    <h3>💡 Hoe werken de groepen?</h3>
-                    <p>We hadden twee parallelle groepen die hetzelfde programma doorliepen. Beide groepen bespraken dezelfde thema's op verschillende data. Het nieuwe seizoen volgt — houd deze pagina in de gaten!</p>
+
+                <!-- Nieuw seizoen 2026–2027 -->
+                <h2>Seizoen 2026–2027</h2>
+                <div class="groepen-uitleg" style="margin-bottom:2rem;">
+                    <h3>📅 Nieuw seizoen in voorbereiding</h3>
+                    <p>De onderwerpen en data voor het seizoen 2026–2027 worden binnenkort bekendgemaakt. Meld je alvast aan via het formulier hieronder — we nemen contact op zodra alles definitief is.</p>
                 </div>
-                <div id="bijeenkomstenContainer"></div>
+                <div id="nieuwSeizoenContainer"></div>
+
+                <!-- Archief 2025–2026 -->
+                <div class="seizoen-archief">
+                    <button class="archief-toggle" id="archiefToggle" aria-expanded="false">
+                        <span>📚 Terugblikken op seizoen 2025–2026</span>
+                        <span class="archief-chevron">▾</span>
+                    </button>
+                    <div class="archief-inhoud" id="archiefInhoud" hidden>
+                        <div class="groepen-uitleg" style="margin-bottom:1.5rem; margin-top:1.5rem;">
+                            <h3>💡 Hoe werkten de groepen?</h3>
+                            <p>We hadden twee parallelle groepen die hetzelfde programma doorliepen. Beide groepen bespraken dezelfde thema's op verschillende data.</p>
+                        </div>
+                        <div id="bijeenkomstenContainer"></div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -1023,6 +1135,7 @@
     </footer>
 
     <script>
+        // ── DATA: ARCHIEF 2025–2026 ──
         const bijeenkomsten = [
             {
                 nummer: 1,
@@ -1071,6 +1184,58 @@
             }
         ];
 
+        // ── DATA: NIEUW SEIZOEN 2026–2027 ──
+        // Vul hieronder de onderwerpen en data in zodra ze definitief zijn.
+        // Laat 'titel' leeg om een placeholder te tonen.
+        // Laat 'datum' leeg (null) zolang de datum nog niet bekend is.
+        const nieuwSeizoen = [
+            {
+                nummer: 1,
+                titel: "",        // bijv. "Vertrouwen"
+                beschrijving: "", // bijv. "Over vertrouwen in jezelf en anderen."
+                momenten: [
+                    { groep: 1, datum: null, status: "binnenkort" },
+                    { groep: 2, datum: null, status: "binnenkort" }
+                ]
+            },
+            {
+                nummer: 2,
+                titel: "",
+                beschrijving: "",
+                momenten: [
+                    { groep: 1, datum: null, status: "binnenkort" },
+                    { groep: 2, datum: null, status: "binnenkort" }
+                ]
+            },
+            {
+                nummer: 3,
+                titel: "",
+                beschrijving: "",
+                momenten: [
+                    { groep: 1, datum: null, status: "binnenkort" },
+                    { groep: 2, datum: null, status: "binnenkort" }
+                ]
+            },
+            {
+                nummer: 4,
+                titel: "",
+                beschrijving: "",
+                momenten: [
+                    { groep: 1, datum: null, status: "binnenkort" },
+                    { groep: 2, datum: null, status: "binnenkort" }
+                ]
+            },
+            {
+                nummer: 5,
+                titel: "",
+                beschrijving: "",
+                momenten: [
+                    { groep: 1, datum: null, status: "binnenkort" },
+                    { groep: 2, datum: null, status: "binnenkort" }
+                ]
+            }
+        ];
+
         function isDatumGeweest(datumString) {
             if (!datumString) return false;
             return new Date(datumString) < new Date();
@@ -1108,33 +1273,45 @@
         }
 
         function updateNextEventBanner() {
-            const nextEvent = vindEerstvolgende();
+            // Zoek eerstvolgende in het nieuwe seizoen
+            let eerstvolgende = null;
+            let vroegsteDatum = null;
+            nieuwSeizoen.forEach(b => {
+                b.momenten.forEach(m => {
+                    if (m.datum && !isDatumGeweest(m.datum)) {
+                        const datum = new Date(m.datum);
+                        if (!vroegsteDatum || datum < vroegsteDatum) {
+                            vroegsteDatum = datum;
+                            eerstvolgende = { titel: b.titel, datum: m.datum, groep: m.groep };
+                        }
+                    }
+                });
+            });
+
             const titleEl = document.getElementById('nextEventTitle');
             const detailsEl = document.getElementById('nextEventDetails');
-            if (nextEvent) {
-                titleEl.textContent = `🗓️ Eerstvolgende bijeenkomst: ${formateerDatum(nextEvent.datum).split(',')[0]}`;
-                detailsEl.textContent = `Groep ${nextEvent.groep} · ${nextEvent.titel} · 19:30 uur · De Kapschuur, Zweeloo`;
+            if (eerstvolgende && eerstvolgende.titel) {
+                titleEl.textContent = `🗓️ Eerstvolgende bijeenkomst: ${formateerDatum(eerstvolgende.datum).split(',')[0]}`;
+                detailsEl.textContent = `Groep ${eerstvolgende.groep} · ${eerstvolgende.titel} · 19:30 uur`;
             } else {
-                titleEl.textContent = "Seizoen 2025–2026 afgerond";
-                detailsEl.textContent = "Nieuw seizoen volgt — houd deze pagina in de gaten!";
+                titleEl.textContent = "Seizoen 2026–2027 in voorbereiding";
+                detailsEl.textContent = "Onderwerpen en data worden binnenkort bekendgemaakt — meld je alvast aan!";
             }
         }
 
         function renderBijeenkomsten() {
+            // Archief 2025–2026
             const container = document.getElementById('bijeenkomstenContainer');
             bijeenkomsten.forEach(bijeenkomst => {
-                const alleGeweest = bijeenkomst.momenten.every(m => isDatumGeweest(m.datum));
                 const card = document.createElement('div');
-                card.className = `bijeenkomst-card${alleGeweest ? ' geweest' : ''}`;
+                card.className = 'bijeenkomst-card geweest';
 
                 const momentenHTML = bijeenkomst.momenten.map(moment => {
-                    const status = getStatus(moment);
-                    const labels = { vol: 'Vol', beschikbaar: 'Beschikbaar', binnenkort: 'Binnenkort', geweest: 'Geweest' };
                     return `
                         <div class="groep-moment">
                             <span class="groep-label">Groep ${moment.groep}</span>
-                            <span class="moment-datum">${formateerDatum(moment.datum)} · De Kapschuur</span>
-                            <span class="moment-status status-${status}">${labels[status]}</span>
+                            <span class="moment-datum">${formateerDatum(moment.datum)}</span>
+                            <span class="moment-status status-geweest">Afgerond</span>
                         </div>`;
                 }).join('');
 
@@ -1142,6 +1319,40 @@
                     <h3>${bijeenkomst.nummer}. ${bijeenkomst.titel}</h3>
                     <p class="thema-beschrijving">${bijeenkomst.beschrijving}</p>
                     <div class="groep-momenten">${momentenHTML}</div>`;
+                container.appendChild(card);
+            });
+        }
+
+        function renderNieuwSeizoen() {
+            const container = document.getElementById('nieuwSeizoenContainer');
+            nieuwSeizoen.forEach(b => {
+                const heeftTitel = b.titel && b.titel.trim() !== '';
+                const card = document.createElement('div');
+
+                if (heeftTitel) {
+                    // Volledig ingevulde card
+                    card.className = 'bijeenkomst-card';
+                    const momentenHTML = b.momenten.map(moment => {
+                        const status = moment.datum ? getStatus(moment) : 'binnenkort';
+                        const labels = { vol: 'Vol', beschikbaar: 'Beschikbaar', binnenkort: 'Binnenkort', geweest: 'Geweest' };
+                        return `
+                            <div class="groep-moment">
+                                <span class="groep-label">Groep ${moment.groep}</span>
+                                <span class="moment-datum">${moment.datum ? formateerDatum(moment.datum) : 'Datum volgt'}</span>
+                                <span class="moment-status status-${status}">${labels[status]}</span>
+                            </div>`;
+                    }).join('');
+                    card.innerHTML = `
+                        <h3>${b.nummer}. ${b.titel}</h3>
+                        ${b.beschrijving ? `<p class="thema-beschrijving">${b.beschrijving}</p>` : ''}
+                        <div class="groep-momenten">${momentenHTML}</div>`;
+                } else {
+                    // Placeholder
+                    card.className = 'nieuw-seizoen-card';
+                    card.innerHTML = `
+                        <div class="nieuw-seizoen-nummer">${b.nummer}</div>
+                        <div class="nieuw-seizoen-tekst">Onderwerp ${b.nummer} — wordt binnenkort bekendgemaakt</div>`;
+                }
                 container.appendChild(card);
             });
         }
@@ -1180,8 +1391,24 @@
         }
 
         updateNextEventBanner();
+        renderNieuwSeizoen();
         renderBijeenkomsten();
         initFormulier();
+
+        // Archief toggle
+        const toggle = document.getElementById('archiefToggle');
+        const inhoud = document.getElementById('archiefInhoud');
+        if (toggle && inhoud) {
+            toggle.addEventListener('click', () => {
+                const open = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!open));
+                if (open) {
+                    inhoud.hidden = true;
+                } else {
+                    inhoud.hidden = false;
+                }
+            });
+        }
 
         const bijeenkomstSelect = document.getElementById('bijeenkomst');
         const groepWrap = document.getElementById('groepVoorkeurWrap');
@@ -1195,3 +1422,4 @@
 
 </body>
 </html>
+
