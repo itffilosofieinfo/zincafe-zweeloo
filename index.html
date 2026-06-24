@@ -15,7 +15,7 @@
     <meta property="og:site_name" content="Zincafé Zweeloo" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -47,26 +47,34 @@
 
         :root {
             /* Basis */
-            --warm-beige: #F6F3EE;
+            --warm-beige: #F5F0E8;
+            --warm-beige-donker: #EDE6D8;
             --white: #FFFFFF;
             --text-dark: #1E2B3A;
             --text-mid: #4A5568;
             --text-light: #718096;
 
-            /* Hoofdkleuren: blauw & oranje */
+            /* Aardtinten hero */
+            --aarde-donker: #2C3E2D;      /* diep mosgroen */
+            --aarde-mid: #3D5140;          /* olijfgroen */
+            --aarde-accent: #8B6914;       /* warm goud */
+
+            /* Blauw */
             --blauw: #2E5B8A;
             --blauw-donker: #1E3D5C;
             --blauw-licht: #4A7BAB;
             --blauw-tint: #EAF1F8;
-            --oranje: #E8834A;
-            --oranje-donker: #C4622A;
-            --oranje-licht: #F0A06E;
-            --oranje-tint: #FDF1EA;
+
+            /* Oranje/warm accent */
+            --oranje: #C8703A;
+            --oranje-donker: #A5521E;
+            --oranje-licht: #E09060;
+            --oranje-tint: #FBF0E8;
 
             /* Shadows & radius */
-            --shadow-sm: 0 2px 8px rgba(46,91,138,0.06);
-            --shadow-md: 0 4px 20px rgba(46,91,138,0.10);
-            --shadow-lg: 0 8px 40px rgba(46,91,138,0.14);
+            --shadow-sm: 0 2px 12px rgba(0,0,0,0.07);
+            --shadow-md: 0 6px 24px rgba(0,0,0,0.11);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.16);
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 24px;
@@ -74,7 +82,7 @@
 
         body {
             font-family: 'Source Sans 3', -apple-system, sans-serif;
-            line-height: 1.7;
+            line-height: 1.75;
             color: var(--text-dark);
             background: var(--warm-beige);
             -webkit-font-smoothing: antialiased;
@@ -82,33 +90,34 @@
 
         h1, h2, h3 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 500;
-            line-height: 1.25;
+            line-height: 1.2;
             letter-spacing: -0.01em;
         }
 
-        h2 { font-size: 2rem; }
-
         /* ── NAV ── */
         nav {
-            background: var(--blauw-donker);
+            background: var(--aarde-donker);
             padding: 0 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         nav a {
-            color: rgba(255,255,255,0.75);
+            color: rgba(255,255,255,0.65);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-family: 'Source Sans 3', sans-serif;
             font-weight: 500;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            padding: 0.85rem 1.5rem;
-            transition: all 0.2s ease;
+            padding: 1rem 1.5rem;
+            transition: all 0.25s ease;
             border-bottom: 2px solid transparent;
         }
 
@@ -117,59 +126,118 @@
             border-bottom-color: var(--oranje);
         }
 
-        /* ── HEADER ── */
+        /* ── HERO / HEADER ── */
         header {
-            background: linear-gradient(150deg, var(--blauw-donker) 0%, var(--blauw) 100%);
+            background: linear-gradient(160deg, var(--aarde-donker) 0%, var(--aarde-mid) 60%, #4a6741 100%);
             color: white;
-            padding: 3.5rem 2rem 4.5rem;
+            padding: 5rem 2rem 6rem;
             text-align: center;
-            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
         }
 
+        /* Subtiele textuurlaag */
         header::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at top right, rgba(232,131,74,0.12) 0%, transparent 60%),
-                        radial-gradient(ellipse at bottom left, rgba(255,255,255,0.04) 0%, transparent 50%);
+            background:
+                radial-gradient(ellipse at 80% 20%, rgba(200,112,58,0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 80%, rgba(255,255,255,0.04) 0%, transparent 40%);
             pointer-events: none;
         }
 
+        /* Decoratieve lijn onder de hero */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--oranje), var(--aarde-accent), var(--oranje), transparent);
+        }
+
         .header-logo {
-            max-width: 160px;
+            max-width: 130px;
             height: auto;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
             display: block;
             border-radius: var(--radius-md);
             position: relative;
             z-index: 1;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.15);
         }
 
         header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.6rem;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
             position: relative;
             z-index: 1;
             color: white;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
 
         header .tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 400;
             opacity: 0.85;
             position: relative;
             z-index: 1;
+            letter-spacing: 0.02em;
+        }
+
+        /* Decoratieve streepjes rondom tagline */
+        .tagline-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            position: relative;
+            z-index: 1;
+            margin-top: 0.5rem;
+        }
+
+        .tagline-ornament {
+            width: 40px;
+            height: 1px;
+            background: rgba(200,112,58,0.7);
+            flex-shrink: 0;
         }
 
         /* ── CONTAINER ── */
         .container {
-            max-width: 920px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 3.5rem 2rem;
+        }
+
+        /* ── NEXT EVENT BANNER ── */
+        .next-event-banner {
+            background: linear-gradient(135deg, var(--oranje) 0%, var(--oranje-donker) 100%);
+            color: white;
+            padding: 1.75rem 2.5rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 6px 28px rgba(200,112,58,0.35);
+        }
+
+        .next-event-banner strong {
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: 0.35rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .next-event-banner div {
+            font-size: 0.95rem;
+            opacity: 0.9;
         }
 
         /* ── DRIE PRODUCTEN KAARTJES ── */
@@ -177,53 +245,53 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .product-card {
             background: white;
             border-radius: var(--radius-md);
-            padding: 2rem 1.75rem;
+            padding: 2.25rem 1.75rem 2rem;
             box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(46,91,138,0.06);
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
         }
 
+        /* Gekleurde toprand per card */
         .product-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 4px;
-            background: var(--oranje);
+            background: linear-gradient(90deg, var(--oranje), var(--aarde-accent));
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-md);
         }
 
         .product-card .product-icon {
-            font-size: 2rem;
+            font-size: 2.25rem;
             margin-bottom: 1rem;
             display: block;
         }
 
         .product-card h3 {
-            color: var(--blauw-donker);
-            font-size: 1.25rem;
+            color: var(--aarde-donker);
+            font-size: 1.2rem;
             margin-bottom: 0.6rem;
+            font-weight: 600;
         }
 
         .product-card p {
             color: var(--text-mid);
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.65;
             flex: 1;
             margin-bottom: 1.25rem;
         }
@@ -231,23 +299,15 @@
         .product-badge {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: var(--oranje-tint);
-            color: var(--oranje-donker);
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
 
-        .product-badge.blauw {
-            background: var(--blauw-tint);
-            color: var(--blauw);
-        }
-
-        .product-badge.grijs {
-            background: #F0F0F0;
-            color: var(--text-light);
-        }
+        .product-badge.oranje  { background: var(--oranje-tint); color: var(--oranje-donker); }
+        .product-badge.groen   { background: #E8F5E9; color: #2E7D32; }
+        .product-badge.grijs   { background: #F0EFEC; color: var(--text-light); }
 
         .product-link {
             display: inline-block;
@@ -259,81 +319,131 @@
             margin-top: auto;
         }
 
-        .product-link:hover {
-            color: var(--oranje);
-        }
+        .product-link:hover { color: var(--oranje); }
 
-        /* ── SECTIES ── */
+        /* ── SECTIES (zebra-patroon) ── */
         section {
-            background: white;
-            padding: 3.5rem;
             border-radius: var(--radius-lg);
             margin-bottom: 2.5rem;
             box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(46,91,138,0.04);
+            border: 1px solid rgba(0,0,0,0.04);
             transition: box-shadow 0.3s ease;
+            overflow: hidden;
         }
 
-        section:hover {
-            box-shadow: var(--shadow-md);
+        section:hover { box-shadow: var(--shadow-md); }
+
+        .section-inner {
+            padding: 3.5rem;
+        }
+
+        /* Zebra: wit */
+        section.wit { background: white; }
+
+        /* Zebra: warm beige */
+        section.beige { background: var(--warm-beige-donker); border-color: rgba(0,0,0,0.06); }
+
+        /* Zebra: donker (voor podcast & contact) */
+        section.donker {
+            background: linear-gradient(140deg, var(--aarde-donker) 0%, var(--aarde-mid) 100%);
+            border-color: transparent;
         }
 
         section h2 {
-            color: var(--blauw-donker);
+            font-size: 2rem;
+            font-weight: 600;
             margin-bottom: 2rem;
             text-align: center;
         }
 
+        section.wit h2,
+        section.beige h2 { color: var(--aarde-donker); }
+
+        section.donker h2 { color: white; }
+
         section p {
             margin-bottom: 1.2rem;
-            color: var(--text-mid);
             font-size: 1.05rem;
-            line-height: 1.8;
+            line-height: 1.85;
+        }
+
+        section.wit p,
+        section.beige p { color: var(--text-mid); }
+
+        section.donker p { color: rgba(255,255,255,0.82); }
+
+        /* Sectie-decoratielijn bovenaan */
+        section.wit::before,
+        section.beige::before {
+            content: '';
+            display: block;
+            height: 3px;
+            background: linear-gradient(90deg, var(--oranje) 0%, transparent 100%);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        /* ── PULLQUOTE ── */
+        .pullquote {
+            position: relative;
+            margin: 2.5rem 0 1rem;
+            padding: 2rem 2.5rem 2rem 3rem;
+            background: var(--oranje-tint);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--oranje);
+        }
+
+        .pullquote::before {
+            content: '\201C';
+            position: absolute;
+            top: -0.25rem;
+            left: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            color: var(--oranje);
+            opacity: 0.35;
+            line-height: 1;
+        }
+
+        .pullquote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.25rem !important;
+            line-height: 1.7 !important;
+            color: var(--text-dark) !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .pullquote cite {
+            font-family: 'Source Sans 3', sans-serif;
+            font-style: normal;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--oranje-donker);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
         /* ── PODCAST SECTIE ── */
-        .podcast-section {
-            background: linear-gradient(135deg, var(--blauw-donker) 0%, var(--blauw) 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .podcast-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at bottom right, rgba(232,131,74,0.15) 0%, transparent 55%);
-            pointer-events: none;
-        }
-
-        .podcast-section h2 {
-            color: white;
-        }
-
-        .podcast-section p {
-            color: rgba(255,255,255,0.85);
-        }
-
         .podcast-inner {
             position: relative;
             z-index: 1;
             display: flex;
             gap: 3rem;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .podcast-icon-large {
-            font-size: 5rem;
+            font-size: 4.5rem;
             flex-shrink: 0;
-            opacity: 0.9;
+            margin-top: 0.25rem;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
         }
 
         .podcast-badge {
             display: inline-block;
-            background: var(--oranje);
+            background: #2e7d32;
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -342,45 +452,34 @@
             margin-bottom: 1rem;
         }
 
-        .podcast-placeholder {
-            background: rgba(255,255,255,0.08);
-            border: 1px dashed rgba(255,255,255,0.25);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
-            font-style: italic;
-        }
-
         /* ── GROEPEN UITLEG ── */
         .groepen-uitleg {
-            background: var(--blauw-tint);
+            background: rgba(255,255,255,0.6);
             border-left: 3px solid var(--blauw);
-            padding: 1.75rem;
+            padding: 1.5rem 1.75rem;
             border-radius: var(--radius-md);
             margin-bottom: 2.5rem;
         }
 
         .groepen-uitleg h3 {
-            color: var(--blauw);
+            color: var(--blauw-donker);
             font-family: 'Source Sans 3', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
             font-weight: 600;
         }
 
         .groepen-uitleg p {
-            color: var(--text-dark);
-            margin-bottom: 0;
-            font-size: 0.95rem;
+            color: var(--text-dark) !important;
+            margin-bottom: 0 !important;
+            font-size: 0.95rem !important;
         }
 
         /* ── BIJEENKOMST KAARTJES ── */
         .bijeenkomst-card {
-            background: var(--warm-beige);
+            background: white;
             padding: 2.25rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             border-radius: var(--radius-md);
             border-left: 4px solid var(--oranje);
             box-shadow: var(--shadow-sm);
@@ -388,44 +487,40 @@
         }
 
         .bijeenkomst-card.geweest {
-            opacity: 0.65;
-            border-left-color: var(--text-light);
+            opacity: 0.6;
+            border-left-color: #ccc;
+            background: var(--warm-beige-donker);
+            box-shadow: none;
         }
 
-        .bijeenkomst-card:hover {
+        .bijeenkomst-card:not(.geweest):hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
         }
 
-        .bijeenkomst-card.geweest:hover {
-            transform: translateY(-1px);
-        }
-
         .bijeenkomst-card h3 {
-            color: var(--blauw-donker);
-            font-size: 1.4rem;
+            color: var(--aarde-donker);
+            font-size: 1.35rem;
             margin-bottom: 0.6rem;
         }
 
-        .bijeenkomst-card.geweest h3 {
-            color: var(--text-light);
-        }
+        .bijeenkomst-card.geweest h3 { color: var(--text-light); }
 
         .thema-beschrijving {
             color: var(--text-mid);
             font-style: italic;
             margin-bottom: 1.25rem;
             padding-left: 1rem;
-            border-left: 2px solid var(--oranje-tint);
+            border-left: 2px solid rgba(200,112,58,0.3);
             font-size: 1rem;
+            line-height: 1.7;
         }
 
         .groep-momenten {
-            background: white;
+            background: var(--warm-beige);
             padding: 1.25rem;
             border-radius: var(--radius-sm);
             margin-top: 1rem;
-            border: 1px solid rgba(46,91,138,0.05);
         }
 
         .groep-moment {
@@ -433,7 +528,7 @@
             align-items: center;
             gap: 1rem;
             padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .groep-moment:last-child { border-bottom: none; }
@@ -441,10 +536,10 @@
         .groep-label {
             font-weight: 700;
             color: var(--blauw);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             min-width: 70px;
             text-transform: uppercase;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
         }
 
         .moment-datum {
@@ -457,17 +552,17 @@
             display: inline-block;
             padding: 0.2rem 0.7rem;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             white-space: nowrap;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.05em;
         }
 
-        .status-vol { background: rgba(232,131,74,0.12); color: var(--oranje-donker); }
-        .status-beschikbaar { background: rgba(46,138,80,0.1); color: #2E7A4F; }
+        .status-vol        { background: rgba(200,112,58,0.12); color: var(--oranje-donker); }
+        .status-beschikbaar{ background: rgba(46,138,80,0.1); color: #2E7A4F; }
         .status-binnenkort { background: var(--blauw-tint); color: var(--blauw); }
-        .status-geweest { background: #F0F0F0; color: var(--text-light); }
+        .status-geweest    { background: #F0F0F0; color: var(--text-light); }
 
         /* ── FORMULIER ── */
         .aanmeld-form {
@@ -475,6 +570,7 @@
             padding: 2.5rem;
             border-radius: var(--radius-md);
             margin-top: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .form-group { margin-bottom: 1.25rem; }
@@ -492,7 +588,7 @@
         .form-group textarea {
             width: 100%;
             padding: 0.85rem 1rem;
-            border: 1.5px solid rgba(46,91,138,0.15);
+            border: 1.5px solid rgba(0,0,0,0.12);
             border-radius: var(--radius-sm);
             font-family: 'Source Sans 3', sans-serif;
             font-size: 0.95rem;
@@ -505,14 +601,14 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--blauw);
-            box-shadow: 0 0 0 3px rgba(46,91,138,0.1);
+            border-color: var(--aarde-mid);
+            box-shadow: 0 0 0 3px rgba(44,62,45,0.1);
         }
 
         .form-group textarea { min-height: 100px; resize: vertical; }
 
         .btn-submit {
-            background: var(--blauw);
+            background: var(--aarde-donker);
             color: white;
             padding: 1rem 2.5rem;
             border: none;
@@ -523,6 +619,7 @@
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
             box-shadow: var(--shadow-sm);
+            letter-spacing: 0.02em;
         }
 
         .btn-submit:hover {
@@ -535,7 +632,7 @@
         .facilitator-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .facilitator { text-align: center; }
@@ -545,29 +642,29 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 3px solid var(--oranje);
+            margin: 0 auto 1.25rem;
             display: block;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            border: 3px solid white;
+            outline: 3px solid var(--oranje);
         }
 
         .facilitator h3 {
-            color: var(--blauw-donker);
+            color: var(--aarde-donker);
             font-size: 1.3rem;
             margin-bottom: 0.4rem;
         }
 
         .facilitator-role {
             color: var(--oranje);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
-        .facilitator p {
-            color: var(--text-mid);
-            font-size: 0.95rem;
-        }
+        .facilitator p { font-size: 0.95rem; }
 
         /* ── FAQ ── */
         .faq-item {
@@ -579,27 +676,21 @@
         .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
         .faq-question {
-            color: var(--blauw-donker);
+            color: var(--aarde-donker);
             font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .faq-answer {
             color: var(--text-mid);
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
         /* ── CONTACT ── */
-        .contact {
-            background: linear-gradient(150deg, var(--blauw-donker) 0%, var(--blauw) 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .contact h2 { color: white; }
-        .contact p { color: rgba(255,255,255,0.85); }
+        section.donker .section-inner { text-align: center; }
 
         .contact-buttons {
             display: flex;
@@ -613,13 +704,13 @@
             display: inline-block;
             padding: 0.9rem 2rem;
             background: white;
-            color: var(--blauw-donker);
+            color: var(--aarde-donker);
             text-decoration: none;
             border-radius: var(--radius-sm);
             font-size: 0.95rem;
             font-weight: 700;
             transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
         }
 
         .btn:hover {
@@ -629,32 +720,18 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* ── QUOTE BLOCK ── */
-        .quote-block {
-            font-style: italic;
-            padding: 1.25rem 1.5rem;
-            border-left: 3px solid var(--oranje);
-            background: var(--oranje-tint);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            color: var(--text-dark);
-            margin: 1.5rem 0;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
         /* ── FOOTER ── */
         footer {
-            background: var(--blauw-donker);
-            color: rgba(255,255,255,0.7);
+            background: var(--aarde-donker);
+            color: rgba(255,255,255,0.6);
             text-align: center;
             padding: 2.5rem 2rem;
-            margin-top: 0;
             font-size: 0.875rem;
-            line-height: 1.8;
+            line-height: 1.9;
         }
 
         footer a {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.55);
             text-decoration: none;
             transition: color 0.2s;
         }
@@ -666,38 +743,14 @@
             padding-top: 1rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.45);
-        }
-
-        /* ── NEXT EVENT BANNER ── */
-        .next-event-banner {
-            background: linear-gradient(135deg, var(--oranje) 0%, var(--oranje-donker) 100%);
-            color: white;
-            padding: 1.75rem 2.5rem;
-            border-radius: var(--radius-lg);
-            margin-bottom: 2.5rem;
-            text-align: center;
-            box-shadow: 0 6px 24px rgba(232,131,74,0.3);
-        }
-
-        .next-event-banner strong {
-            font-size: 1.3rem;
-            display: block;
-            margin-bottom: 0.35rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-
-        .next-event-banner div {
-            font-size: 0.95rem;
-            opacity: 0.9;
+            color: rgba(255,255,255,0.4);
         }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.25rem; }
-            .container { padding: 2rem 1.25rem; }
-            section { padding: 2rem 1.5rem; }
+            header { padding: 4rem 1.5rem 5rem; }
+            .section-inner { padding: 2.5rem 1.5rem; }
+            .container { padding: 2.5rem 1.25rem; }
 
             .producten-grid {
                 grid-template-columns: 1fr;
@@ -709,12 +762,12 @@
                 gap: 1.5rem;
             }
 
-            .podcast-icon-large { font-size: 3.5rem; }
+            .podcast-icon-large { font-size: 3rem; }
 
             .groep-moment {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.4rem;
+                gap: 0.35rem;
                 padding: 0.75rem 0;
             }
 
@@ -722,11 +775,10 @@
             .moment-status { align-self: flex-start; }
 
             nav { overflow-x: auto; justify-content: flex-start; }
-            nav a { padding: 0.75rem 1rem; font-size: 0.8rem; white-space: nowrap; }
-        }
+            nav a { padding: 0.8rem 1rem; font-size: 0.75rem; white-space: nowrap; }
 
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .producten-grid { grid-template-columns: repeat(3, 1fr); }
+            .pullquote { padding: 1.5rem 1.5rem 1.5rem 2rem; }
+            .pullquote p { font-size: 1.1rem !important; }
         }
     </style>
 </head>
@@ -744,7 +796,11 @@
     <header>
         <img src="image.jpg" alt="Zincafé Zweeloo Logo" class="header-logo">
         <h1>Zincafé Zweeloo</h1>
-        <p class="tagline">Gesprekken die ertoe doen</p>
+        <div class="tagline-wrapper">
+            <span class="tagline-ornament"></span>
+            <p class="tagline">Gesprekken die ertoe doen</p>
+            <span class="tagline-ornament"></span>
+        </div>
     </header>
 
     <div class="container">
@@ -757,7 +813,6 @@
 
         <!-- ── DRIE PRODUCTEN ── -->
         <div class="producten-grid">
-            <!-- Zincafé -->
             <div class="product-card">
                 <span class="product-icon">☕</span>
                 <span class="product-badge grijs">Seizoen 2025–2026 afgerond · nieuw seizoen volgt</span>
@@ -766,178 +821,192 @@
                 <a href="#bijeenkomsten" class="product-link">Bekijk de bijeenkomsten →</a>
             </div>
 
-            <!-- Filosofie van A tot Z -->
             <div class="product-card">
                 <span class="product-icon">📖</span>
-                <span class="product-badge" style="background: #E8F5E9; color: #2E7D32;">✅ Aanmeldingen open · nieuw seizoen</span>
+                <span class="product-badge groen">✅ Aanmeldingen open · nieuw seizoen</span>
                 <h3>Filosofie in Vogelvlucht</h3>
                 <p>Twee avonden over de grote vragen van de westerse filosofie. Van Aristoteles tot Žižek. <em>Aanmeldingen voor het nieuwe seizoen zijn open!</em></p>
                 <a href="filosofie-in-vogelvlucht.html" class="product-link">Bekijk de informatie →</a>
             </div>
 
-            <!-- Podcast -->
             <div class="product-card">
                 <span class="product-icon">🎙️</span>
-                <span class="product-badge" style="background:#E8F5E9;color:#2E7D32;">🎙️ Nu te beluisteren</span>
-<h3>Podcast Filosofiecafé Emmen</h3>
-<p>Sjoerd en Nathalie zijn te gast in de podcast van het Filosofiecafé Emmen — over zingeving, filosofie en grote vragen in een kleine gemeenschap.</p>
+                <span class="product-badge groen">🎙️ Nu te beluisteren</span>
+                <h3>Podcast Filosofiecafé Emmen</h3>
+                <p>Sjoerd en Nathalie zijn te gast in de podcast van het Filosofiecafé Emmen — over zingeving, filosofie en grote vragen in een kleine gemeenschap.</p>
             </div>
         </div>
 
-        <!-- ── INTRO ── -->
-        <section>
-            <h2>Waarom een Zincafé in Zweeloo?</h2>
-            <p>In een wereld die steeds sneller lijkt te draaien, is het waardevol om stil te staan bij vragen die er echt toe doen. Wat betekent het om 'goed' te leven? Hoe verhoud je je tot anderen, tot de tijd, tot jezelf?</p>
-            <p>Met dat idee startten we in Zweeloo het Zincafé — een reeks toegankelijke bijeenkomsten waarin we als dorpsgenoten in gesprek gaan over zingeving in de brede zin van het woord.</p>
-            <p>Sjoerd en Nathalie zijn verbonden aan het <a href="https://www.instituutvoortoegepastefilosofie.nl" target="_blank" rel="noopener" style="color: var(--blauw); font-weight: 600;">Instituut voor Toegepaste Filosofie</a>, dat filosofie inzet als praktisch instrument — in organisaties, onderwijs en de samenleving.</p>
-            <div class="quote-block">
-                "Iedereen denkt wel eens na over wat ertoe doet. Dat hoeft niet groot of ingewikkeld — soms helpt het om gewoon met elkaar te praten, met een beetje hulp van filosofen." — Sjoerd
+        <!-- ── INTRO (wit) ── -->
+        <section class="wit">
+            <div class="section-inner">
+                <h2>Waarom een Zincafé in Zweeloo?</h2>
+                <p>In een wereld die steeds sneller lijkt te draaien, is het waardevol om stil te staan bij vragen die er echt toe doen. Wat betekent het om 'goed' te leven? Hoe verhoud je je tot anderen, tot de tijd, tot jezelf?</p>
+                <p>Met dat idee startten we in Zweeloo het Zincafé — een reeks toegankelijke bijeenkomsten waarin we als dorpsgenoten in gesprek gaan over zingeving in de brede zin van het woord.</p>
+                <p>Sjoerd en Nathalie zijn verbonden aan het <a href="https://www.instituutvoortoegepastefilosofie.nl" target="_blank" rel="noopener" style="color: var(--blauw); font-weight: 600;">Instituut voor Toegepaste Filosofie</a>, dat filosofie inzet als praktisch instrument — in organisaties, onderwijs en de samenleving.</p>
+
+                <blockquote class="pullquote">
+                    <p>Iedereen denkt wel eens na over wat ertoe doet. Dat hoeft niet groot of ingewikkeld — soms helpt het om gewoon met elkaar te praten, met een beetje hulp van filosofen.</p>
+                    <cite>— Sjoerd</cite>
+                </blockquote>
             </div>
         </section>
 
-        <!-- ── PODCAST ── -->
-        <section class="podcast-section" id="podcast">
-            <div class="podcast-inner">
-                <div class="podcast-icon-large">🎙️</div>
-                <div>
-                  <span class="podcast-badge" style="background:#2e7d32;">🎙️ Nu te beluisteren</span>
-                    <h2 style="text-align: left; margin-bottom: 1rem;">Podcast Filosofiecafé Emmen</h2>
-                    <p>Sjoerd en Nathalie zijn te gast in de podcast van het Filosofiecafé Emmen. Ze gaan in gesprek over zingeving, filosofie in de praktijk en wat het betekent om in een kleine gemeenschap grote vragen te stellen.</p>
-                    <div style="margin-top:1.5rem;">
-                        <iframe style="border-radius:12px"
-                            src="https://open.spotify.com/embed/episode/6BwomfjKnnG7S837hjiT5m?utm_source=generator"
-                            width="100%" height="152" frameBorder="0"
-                            allowfullscreen=""
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy">
-                        </iframe>
+        <!-- ── PODCAST (donker) ── -->
+        <section class="donker" id="podcast">
+            <div class="section-inner">
+                <div class="podcast-inner">
+                    <div class="podcast-icon-large">🎙️</div>
+                    <div>
+                        <span class="podcast-badge">🎙️ Nu te beluisteren</span>
+                        <h2 style="text-align: left; margin-bottom: 1rem;">Podcast Filosofiecafé Emmen</h2>
+                        <p>Sjoerd en Nathalie zijn te gast in de podcast van het Filosofiecafé Emmen. Ze gaan in gesprek over zingeving, filosofie in de praktijk en wat het betekent om in een kleine gemeenschap grote vragen te stellen.</p>
+                        <div style="margin-top:1.5rem;">
+                            <iframe style="border-radius:12px"
+                                src="https://open.spotify.com/embed/episode/6BwomfjKnnG7S837hjiT5m?utm_source=generator"
+                                width="100%" height="152" frameBorder="0"
+                                allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ── BEGELEIDERS ── -->
-        <section>
-            <h2>De begeleiders</h2>
-            <div class="facilitator-grid">
-                <div class="facilitator">
-                    <img src="sjoerd.jpg" alt="Sjoerd Slagter" class="facilitator-photo">
-                    <h3>Sjoerd Slagter</h3>
-                    <p class="facilitator-role">Filosoof & Gespreksbegeleider</p>
-                    <p>Sjoerd is bioloog en filosoof. Hij doceert aan de Hogeschool voor Toegepaste Filosofie (HTF) en is gespecialiseerd in toegepaste filosofie, bestuur en onderwijs. Hij is mede-auteur van de methode Leren Filosoferen.</p>
-                </div>
-                <div class="facilitator">
-                    <img src="nathalie.jpg" alt="Nathalie van Hooff" class="facilitator-photo">
-                    <h3>Nathalie van Hooff</h3>
-                    <p class="facilitator-role">Trainer & Gespreksbegeleider</p>
-                    <p>Nathalie brengt rust en diepgang in gesprekken. Ze creëert een veilige ruimte waarin mensen zich durven uit te spreken.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── BIJEENKOMSTEN ── -->
-        <section id="bijeenkomsten">
-            <h2>Vijf bijeenkomsten 2025–2026</h2>
-            <div class="groepen-uitleg">
-                <h3>💡 Hoe werken de groepen?</h3>
-                <p>We hadden twee parallelle groepen die hetzelfde programma doorliepen. Beide groepen bespraken dezelfde thema's op verschillende data. Het nieuwe seizoen volgt — houd deze pagina in de gaten!</p>
-            </div>
-            <div id="bijeenkomstenContainer"></div>
-        </section>
-
-        <!-- ── AANMELDFORMULIER ── -->
-        <section>
-            <h2>Aanmelden voor nieuw seizoen</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">
-                De aanmeldingen voor het nieuwe seizoen van het Zincafé (vijf avonden) en Filosofie in Vogelvlucht (twee avonden) zijn geopend. Meld je aan en wij nemen contact met je op zodra de data definitief zijn.
-            </p>
-            <div class="aanmeld-form">
-                <form id="aanmeldForm" action="https://formspree.io/f/mwpakbbq" method="POST">
-                    <div class="form-group">
-                        <label for="naam">Naam *</label>
-                        <input type="text" id="naam" name="naam" required>
+        <!-- ── BEGELEIDERS (beige) ── -->
+        <section class="beige">
+            <div class="section-inner">
+                <h2>De begeleiders</h2>
+                <div class="facilitator-grid">
+                    <div class="facilitator">
+                        <img src="sjoerd.jpg" alt="Sjoerd Slagter" class="facilitator-photo">
+                        <h3>Sjoerd Slagter</h3>
+                        <p class="facilitator-role">Filosoof & Gespreksbegeleider</p>
+                        <p>Sjoerd is bioloog en filosoof. Hij doceert aan de Hogeschool voor Toegepaste Filosofie (HTF) en is gespecialiseerd in toegepaste filosofie, bestuur en onderwijs. Hij is mede-auteur van de methode Leren Filosoferen.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">E-mailadres *</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="facilitator">
+                        <img src="nathalie.jpg" alt="Nathalie van Hooff" class="facilitator-photo">
+                        <h3>Nathalie van Hooff</h3>
+                        <p class="facilitator-role">Trainer & Gespreksbegeleider</p>
+                        <p>Nathalie brengt rust en diepgang in gesprekken. Ze creëert een veilige ruimte waarin mensen zich durven uit te spreken.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="telefoon">Telefoonnummer (optioneel)</label>
-                        <input type="tel" id="telefoon" name="telefoon">
-                    </div>
-                    <div class="form-group">
-                        <label for="bijeenkomst">Waarvoor wil je je aanmelden? *</label>
-                        <select id="bijeenkomst" name="bijeenkomst" required>
-                            <option value="">-- Maak een keuze --</option>
-                            <optgroup label="Zincafé Zweeloo (vijf avonden)">
-                                <option value="zincafe-nieuw-seizoen">Zincafé – nieuw seizoen (vijf avonden)</option>
-                            </optgroup>
-                            <optgroup label="Filosofie in Vogelvlucht (twee avonden)">
-                                <option value="filosofie-vogelvlucht-nieuw">Filosofie in Vogelvlucht – nieuw seizoen (twee avonden)</option>
-                            </optgroup>
-                            <option value="beide">Beide: Zincafé én Filosofie in Vogelvlucht</option>
-                            <option value="op-de-hoogte">Houd mij op de hoogte (nog geen keuze)</option>
-                            <option value="algemeen">Algemene vraag</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="groepVoorkeurWrap" style="display:none;">
-                        <label for="groepVoorkeur">Voorkeur voor avond Zincafé (optioneel)</label>
-                        <select id="groepVoorkeur" name="groepVoorkeur">
-                            <option value="">-- Geen voorkeur --</option>
-                            <option value="maandag">Maandag</option>
-                            <option value="dinsdag">Dinsdag</option>
-                            <option value="woensdag">Woensdag</option>
-                            <option value="donderdag">Donderdag</option>
-                            <option value="vrijdag">Vrijdag</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="opmerking">Eventuele vragen of opmerkingen</label>
-                        <textarea id="opmerking" name="opmerking" placeholder="Bijv. iemand meenemen, eerste keer, etc."></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Versturen</button>
-                    <div id="formStatus" style="margin-top: 1rem; padding: 1rem; border-radius: 6px; display: none;"></div>
-                </form>
-            </div>
-        </section>
-
-        <!-- ── FAQ ── -->
-        <section>
-            <h2>Veelgestelde vragen</h2>
-            <div class="faq-item">
-                <div class="faq-question">Wat is het Zincafé Zweeloo precies?</div>
-                <div class="faq-answer">Het Zincafé is een kleinschalige ontmoetingsplek waar we samen vertragen en de tijd nemen voor vragen die ertoe doen. In een open gesprek onderzoeken we ervaringen en thema's die raken aan de zin van het leven.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Hoe verloopt een bijeenkomst?</div>
-                <div class="faq-answer">
-                    <strong>19:15</strong> — Inloop met koffie/thee<br>
-                    <strong>19:30</strong> — Welkom en korte introductie op het thema<br>
-                    <strong>19:45–21:15</strong> — Gesprek in de groep<br>
-                    <strong>21:15–21:30</strong> — Afsluiting en napraten<br><br>
-                    Je bepaalt zelf hoeveel je wilt inbrengen: luisteren mag net zo goed als spreken.
                 </div>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Moet ik filosofie kennen om mee te doen?</div>
-                <div class="faq-answer">Absoluut niet! Het Zincafé is juist bedoeld voor iedereen. Je hoeft geen voorkennis te hebben. Nieuwsgierigheid en bereidheid om te luisteren en na te denken is het belangrijkste.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Wat kost deelname?</div>
-                <div class="faq-answer">Deelname is gratis. Een vrijwillige bijdrage voor koffie of thee is welkom, maar volledig optioneel.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Kan ik iemand meenemen?</div>
-                <div class="faq-answer">Ja, dat kan zeker! Laat het ons even weten bij je aanmelding, zodat we rekening kunnen houden met het aantal deelnemers.</div>
+        </section>
+
+        <!-- ── BIJEENKOMSTEN (wit) ── -->
+        <section class="wit" id="bijeenkomsten">
+            <div class="section-inner">
+                <h2>Vijf bijeenkomsten 2025–2026</h2>
+                <div class="groepen-uitleg">
+                    <h3>💡 Hoe werken de groepen?</h3>
+                    <p>We hadden twee parallelle groepen die hetzelfde programma doorliepen. Beide groepen bespraken dezelfde thema's op verschillende data. Het nieuwe seizoen volgt — houd deze pagina in de gaten!</p>
+                </div>
+                <div id="bijeenkomstenContainer"></div>
             </div>
         </section>
 
-        <!-- ── CONTACT ── -->
-        <section class="contact">
-            <h2>Vragen of contact?</h2>
-            <p>We horen graag van je!</p>
-            <div class="contact-buttons">
-                <a href="mailto:zincafezweeloo@gmail.com" class="btn">✉️ Stuur een e-mail</a>
+        <!-- ── AANMELDFORMULIER (beige) ── -->
+        <section class="beige">
+            <div class="section-inner">
+                <h2>Aanmelden voor nieuw seizoen</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">
+                    De aanmeldingen voor het nieuwe seizoen van het Zincafé (vijf avonden) en Filosofie in Vogelvlucht (twee avonden) zijn geopend. Meld je aan en wij nemen contact met je op zodra de data definitief zijn.
+                </p>
+                <div class="aanmeld-form">
+                    <form id="aanmeldForm" action="https://formspree.io/f/mwpakbbq" method="POST">
+                        <div class="form-group">
+                            <label for="naam">Naam *</label>
+                            <input type="text" id="naam" name="naam" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mailadres *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefoon">Telefoonnummer (optioneel)</label>
+                            <input type="tel" id="telefoon" name="telefoon">
+                        </div>
+                        <div class="form-group">
+                            <label for="bijeenkomst">Waarvoor wil je je aanmelden? *</label>
+                            <select id="bijeenkomst" name="bijeenkomst" required>
+                                <option value="">-- Maak een keuze --</option>
+                                <optgroup label="Zincafé Zweeloo (vijf avonden)">
+                                    <option value="zincafe-nieuw-seizoen">Zincafé – nieuw seizoen (vijf avonden)</option>
+                                </optgroup>
+                                <optgroup label="Filosofie in Vogelvlucht (twee avonden)">
+                                    <option value="filosofie-vogelvlucht-nieuw">Filosofie in Vogelvlucht – nieuw seizoen (twee avonden)</option>
+                                </optgroup>
+                                <option value="beide">Beide: Zincafé én Filosofie in Vogelvlucht</option>
+                                <option value="op-de-hoogte">Houd mij op de hoogte (nog geen keuze)</option>
+                                <option value="algemeen">Algemene vraag</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="groepVoorkeurWrap" style="display:none;">
+                            <label for="groepVoorkeur">Voorkeur voor avond Zincafé (optioneel)</label>
+                            <select id="groepVoorkeur" name="groepVoorkeur">
+                                <option value="">-- Geen voorkeur --</option>
+                                <option value="maandag">Maandag</option>
+                                <option value="dinsdag">Dinsdag</option>
+                                <option value="woensdag">Woensdag</option>
+                                <option value="donderdag">Donderdag</option>
+                                <option value="vrijdag">Vrijdag</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="opmerking">Eventuele vragen of opmerkingen</label>
+                            <textarea id="opmerking" name="opmerking" placeholder="Bijv. iemand meenemen, eerste keer, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Versturen</button>
+                        <div id="formStatus" style="margin-top: 1rem; padding: 1rem; border-radius: 6px; display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── FAQ (wit) ── -->
+        <section class="wit">
+            <div class="section-inner">
+                <h2>Veelgestelde vragen</h2>
+                <div class="faq-item">
+                    <div class="faq-question">Wat is het Zincafé Zweeloo precies?</div>
+                    <div class="faq-answer">Het Zincafé is een kleinschalige ontmoetingsplek waar we samen vertragen en de tijd nemen voor vragen die ertoe doen. In een open gesprek onderzoeken we ervaringen en thema's die raken aan de zin van het leven.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Hoe verloopt een bijeenkomst?</div>
+                    <div class="faq-answer">
+                        <strong>19:15</strong> — Inloop met koffie/thee<br>
+                        <strong>19:30</strong> — Welkom en korte introductie op het thema<br>
+                        <strong>19:45–21:15</strong> — Gesprek in de groep<br>
+                        <strong>21:15–21:30</strong> — Afsluiting en napraten<br><br>
+                        Je bepaalt zelf hoeveel je wilt inbrengen: luisteren mag net zo goed als spreken.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Moet ik filosofie kennen om mee te doen?</div>
+                    <div class="faq-answer">Absoluut niet! Het Zincafé is juist bedoeld voor iedereen. Je hoeft geen voorkennis te hebben. Nieuwsgierigheid en bereidheid om te luisteren en na te denken is het belangrijkste.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Wat kost deelname?</div>
+                    <div class="faq-answer">Deelname is gratis. Een vrijwillige bijdrage voor koffie of thee is welkom, maar volledig optioneel.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Kan ik iemand meenemen?</div>
+                    <div class="faq-answer">Ja, dat kan zeker! Laat het ons even weten bij je aanmelding, zodat we rekening kunnen houden met het aantal deelnemers.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CONTACT (donker) ── -->
+        <section class="donker">
+            <div class="section-inner">
+                <h2>Vragen of contact?</h2>
+                <p>We horen graag van je!</p>
+                <div class="contact-buttons">
+                    <a href="mailto:zincafezweeloo@gmail.com" class="btn">✉️ Stuur een e-mail</a>
+                </div>
             </div>
         </section>
 
@@ -1093,14 +1162,14 @@
                     });
                     if (response.ok) {
                         formStatus.style.display = 'block';
-                        formStatus.style.background = 'rgba(46,91,138,0.1)';
-                        formStatus.style.color = 'var(--blauw)';
+                        formStatus.style.background = 'rgba(44,62,45,0.08)';
+                        formStatus.style.color = 'var(--aarde-donker)';
                         formStatus.textContent = '✓ Bedankt! We nemen zo snel mogelijk contact met je op.';
                         form.reset();
                     } else throw new Error('Fout');
                 } catch {
                     formStatus.style.display = 'block';
-                    formStatus.style.background = 'rgba(232,131,74,0.12)';
+                    formStatus.style.background = 'rgba(200,112,58,0.12)';
                     formStatus.style.color = 'var(--oranje-donker)';
                     formStatus.textContent = '✗ Er ging iets mis. Probeer het opnieuw of mail naar zincafezweeloo@gmail.com';
                 } finally {
@@ -1114,7 +1183,6 @@
         renderBijeenkomsten();
         initFormulier();
 
-        // Toon/verberg groepvoorkeur op basis van selectie
         const bijeenkomstSelect = document.getElementById('bijeenkomst');
         const groepWrap = document.getElementById('groepVoorkeurWrap');
         if (bijeenkomstSelect && groepWrap) {
