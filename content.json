@@ -9,7 +9,7 @@
     "ogImage": "image.jpg",
     "ogUrl": "https://zincafe-zweeloo.nl",
     "canonicalUrl": "https://zincafe-zweeloo.nl",
-    "email": "zincafezweeloo@gmail.com"
+    "email": "zincafe-zweeloo@proton.me"
   },
   "sections": [
     {
@@ -166,7 +166,7 @@
           },
           {
             "question": "Hoe kan ik me aanmelden, is dat verplicht en wat kost deelname?",
-            "answer": "Aanmelden is nodig omdat we met kleine groepen werken. Dat kan via zincafezweeloo@gmail.com.\nJe ontvangt daarna een bevestiging en zo nodig extra praktische informatie.\n\nDeelname is gratis. Wie wil, mag een vrijwillige bijdrage doen voor koffie of thee, maar dat is volledig optioneel."
+            "answer": "Aanmelden is nodig omdat we met kleine groepen werken. Dat kan via zincafe-zweeloo@proton.me.\nJe ontvangt daarna een bevestiging en zo nodig extra praktische informatie.\n\nDeelname is gratis. Wie wil, mag een vrijwillige bijdrage doen voor koffie of thee, maar dat is volledig optioneel."
           },
           {
             "question": "Kan ik iemand meenemen – en kan ik meedoen als de groepen vol zijn?",
@@ -188,11 +188,11 @@
         "links": [
           {
             "text": "✉️ Stel een vraag",
-            "href": "mailto:zincafezweeloo@gmail.com"
+            "href": "mailto:zincafe-zweeloo@proton.me"
           },
           {
             "text": "📝 Aanmelden",
-            "href": "mailto:zincafezweeloo@gmail.com?subject=Aanmelden Zincafé"
+            "href": "mailto:zincafe-zweeloo@proton.me?subject=Aanmelden Zincafé"
           },
           {
             "text": "📱 WhatsApp",
@@ -221,7 +221,7 @@
       "type": "footer",
       "content": {
         "text": "Zincafé Zweeloo – Gesprekken over zingeving in Zweeloo en omgeving",
-        "email": "zincafezweeloo@gmail.com"
+        "email": "zincafe-zweeloo@proton.me"
       },
       "selector": "footer"
     }
@@ -236,15 +236,15 @@
     "links": [
       {
         "text": "Reserveer je plek →",
-        "url": "mailto:zincafezweeloo@gmail.com?subject=Aanmelden: Wat is een zinvol leven"
+        "url": "mailto:zincafe-zweeloo@proton.me?subject=Aanmelden: Wat is een zinvol leven"
       },
       {
         "text": "✉️ Stel een vraag",
-        "url": "mailto:zincafezweeloo@gmail.com"
+        "url": "mailto:zincafe-zweeloo@proton.me"
       },
       {
         "text": "📝 Aanmelden",
-        "url": "mailto:zincafezweeloo@gmail.com?subject=Aanmelden Zincafé"
+        "url": "mailto:zincafe-zweeloo@proton.me?subject=Aanmelden Zincafé"
       },
       {
         "text": "📱 WhatsApp",
