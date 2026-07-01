@@ -192,7 +192,7 @@
   const activiteitSel = document.getElementById('activiteit');
   const avondWrap = document.getElementById('avondWrap');
   activiteitSel.addEventListener('change', function() {
-    const toonAvond = this.value.includes('Zincafé') || this.value.includes('Beide');
+    const toonAvond = this.value !== '' && this.value !== 'Op de hoogte houden';
     avondWrap.style.display = toonAvond ? 'block' : 'none';
   });
 
