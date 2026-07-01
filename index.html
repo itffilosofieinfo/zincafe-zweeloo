@@ -882,6 +882,7 @@
     <nav>
         <a href="index.html" class="actief">Zincafé</a>
         <a href="filosofie-in-vogelvlucht.html">Filosofie in Vogelvlucht</a>
+        <a href="aanmelden.html">Aanmelden</a>
         <a href="#podcast">Podcast</a>
         <a href="https://www.instituutvoortoegepastefilosofie.nl" target="_blank" rel="noopener">Ons Instituut ↗</a>
     </nav>
@@ -1020,61 +1021,16 @@
             </div>
         </section>
 
-        <!-- ── AANMELDFORMULIER (beige) ── -->
+        <!-- ── AANMELDEN CTA (beige) ── -->
         <section class="beige">
-            <div class="section-inner">
+            <div class="section-inner" style="text-align: center;">
                 <h2>Aanmelden voor nieuw seizoen</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">
+                <p style="max-width: 540px; margin: 1.25rem auto 2.5rem;">
                     De aanmeldingen voor het nieuwe seizoen van het Zincafé (vijf avonden) en Filosofie in Vogelvlucht (twee avonden) zijn geopend. Meld je aan en wij nemen contact met je op zodra de data definitief zijn.
                 </p>
-                <div class="aanmeld-form">
-                    <form id="aanmeldForm" action="https://formspree.io/f/mwpakbbq" method="POST">
-                        <div class="form-group">
-                            <label for="naam">Naam *</label>
-                            <input type="text" id="naam" name="naam" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mailadres *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefoon">Telefoonnummer (optioneel)</label>
-                            <input type="tel" id="telefoon" name="telefoon">
-                        </div>
-                        <div class="form-group">
-                            <label for="bijeenkomst">Waarvoor wil je je aanmelden? *</label>
-                            <select id="bijeenkomst" name="bijeenkomst" required>
-                                <option value="">-- Maak een keuze --</option>
-                                <optgroup label="Zincafé Zweeloo (vijf avonden)">
-                                    <option value="zincafe-nieuw-seizoen">Zincafé – nieuw seizoen (vijf avonden)</option>
-                                </optgroup>
-                                <optgroup label="Filosofie in Vogelvlucht (twee avonden)">
-                                    <option value="filosofie-vogelvlucht-nieuw">Filosofie in Vogelvlucht – nieuw seizoen (twee avonden)</option>
-                                </optgroup>
-                                <option value="beide">Beide: Zincafé én Filosofie in Vogelvlucht</option>
-                                <option value="op-de-hoogte">Houd mij op de hoogte (nog geen keuze)</option>
-                                <option value="algemeen">Algemene vraag</option>
-                            </select>
-                        </div>
-                        <div class="form-group" id="groepVoorkeurWrap" style="display:none;">
-                            <label for="groepVoorkeur">Voorkeur voor avond Zincafé (optioneel)</label>
-                            <select id="groepVoorkeur" name="groepVoorkeur">
-                                <option value="">-- Geen voorkeur --</option>
-                                <option value="maandag">Maandag</option>
-                                <option value="dinsdag">Dinsdag</option>
-                                <option value="woensdag">Woensdag</option>
-                                <option value="donderdag">Donderdag</option>
-                                <option value="vrijdag">Vrijdag</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="opmerking">Eventuele vragen of opmerkingen</label>
-                            <textarea id="opmerking" name="opmerking" placeholder="Bijv. iemand meenemen, eerste keer, etc."></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">Versturen</button>
-                        <div id="formStatus" style="margin-top: 1rem; padding: 1rem; border-radius: 6px; display: none;"></div>
-                    </form>
-                </div>
+                <a href="aanmelden.html" class="btn-submit" style="display:inline-block; text-decoration:none; padding: 1rem 3rem; font-size: 1.05rem;">
+                    Naar het aanmeldformulier →
+                </a>
             </div>
         </section>
 
@@ -1128,6 +1084,9 @@
     <footer>
         <p>Zincafé Zweeloo — Gesprekken over zingeving in Zweeloo</p>
         <p style="margin-top: 0.4rem;">✉️ <a href="mailto:zincafe-zweeloo@proton.me">zincafe-zweeloo@proton.me</a></p>
+        <p style="margin-top: 0.4rem; font-size: 0.82rem; opacity: 0.7;">
+            <a href="privacyverklaring.html">Privacyverklaring</a>
+        </p>
         <div class="footer-instituut">
             Sjoerd Slagter en Nathalie van Hooff zijn verbonden aan het
             <a href="https://www.instituutvoortoegepastefilosofie.nl" target="_blank" rel="noopener">Instituut voor Toegepaste Filosofie</a>

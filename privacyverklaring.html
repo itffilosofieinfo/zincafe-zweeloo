@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image.jpg">
+<meta name="description" content="Privacyverklaring van Zincafé Zweeloo — hoe wij omgaan met persoonsgegevens.">
+<title>Privacyverklaring — Zincafé Zweeloo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --warm-beige: #F5F0E8; --warm-beige-donker: #EDE6D8;
+    --white: #FFFFFF; --text-dark: #1E2B3A; --text-mid: #4A5568; --text-light: #718096;
+    --aarde-donker: #2C3E2D; --aarde-mid: #3D5140; --aarde-accent: #8B6914;
+    --blauw: #2E5B8A; --blauw-donker: #1E3D5C; --blauw-licht: #4A7BAB; --blauw-tint: #EAF1F8;
+    --oranje: #C8703A; --oranje-donker: #A5521E; --oranje-licht: #E09060; --oranje-tint: #FBF0E8;
+    --shadow-sm: 0 2px 12px rgba(0,0,0,0.07); --shadow-md: 0 6px 24px rgba(0,0,0,0.11);
+    --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px;
+  }
+  body { font-family: 'Source Sans 3', -apple-system, sans-serif; line-height: 1.75; color: var(--text-dark); background: var(--warm-beige); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.2; letter-spacing: -0.01em; }
+
+  nav {
+    background: var(--aarde-donker); padding: 0 2rem;
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  nav a {
+    color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.8rem;
+    font-family: 'Source Sans 3', sans-serif; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 1rem 1.5rem; transition: all 0.25s ease;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a.actief { color: white; border-bottom-color: var(--oranje); }
+
+  header {
+    background: linear-gradient(160deg, var(--aarde-donker) 0%, var(--aarde-mid) 60%, #4a6741 100%);
+    color: white; padding: 4rem 2rem 5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(200,112,58,0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 80%, rgba(255,255,255,0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  header::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, transparent, var(--oranje), var(--aarde-accent), var(--oranje), transparent);
+  }
+  header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; position: relative; z-index: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+  header p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; opacity: 0.8; margin-top: 0.5rem; position: relative; z-index: 1; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  .card {
+    background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0,0,0,0.05); padding: 3rem 3.5rem;
+  }
+
+  .versie-badge {
+    display: inline-block; background: var(--warm-beige); color: var(--text-light);
+    font-size: 0.8rem; padding: 0.3rem 0.85rem; border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.08); margin-bottom: 2rem;
+  }
+
+  h2 { font-size: 1.75rem; color: var(--aarde-donker); margin-bottom: 0.5rem; font-weight: 600; }
+  .inleiding { color: var(--text-mid); margin-bottom: 2.5rem; font-size: 1rem; }
+
+  h3 {
+    font-size: 1.2rem; color: var(--aarde-donker); margin: 2.5rem 0 0.75rem;
+    padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.07); font-weight: 600;
+  }
+  h3:first-of-type { border-top: none; padding-top: 0; }
+
+  p { margin-bottom: 0.85rem; color: var(--text-mid); }
+  ul { margin: 0.5rem 0 0.85rem 1.5rem; }
+  ul li { margin-bottom: 0.5rem; color: var(--text-mid); }
+  a { color: var(--blauw); }
+
+  .highlight {
+    background: var(--blauw-tint); border-left: 3px solid var(--blauw-licht);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.9rem; color: var(--blauw-donker);
+  }
+
+  .contact-blok {
+    background: var(--warm-beige); border-radius: var(--radius-sm);
+    padding: 1.25rem 1.5rem; margin-top: 1rem; font-size: 0.9rem;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .contact-blok strong { display: block; margin-bottom: 0.4rem; color: var(--aarde-donker); font-family: 'Playfair Display', serif; font-size: 1rem; }
+
+  footer { text-align: center; padding: 2rem 1rem 3rem; font-size: 0.85rem; color: var(--text-light); }
+  footer a { color: var(--text-light); text-decoration: none; }
+  footer a:hover { color: var(--oranje); }
+
+  @media (max-width: 600px) { .card { padding: 2rem 1.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Zincafé</a>
+  <a href="filosofie-in-vogelvlucht.html">Filosofie in Vogelvlucht</a>
+  <a href="aanmelden.html">Aanmelden</a>
+  <a href="https://www.instituutvoortoegepastefilosofie.nl" target="_blank" rel="noopener">Ons Instituut ↗</a>
+</nav>
+
+<header>
+  <h1>Privacyverklaring</h1>
+  <p>Zincafé Zweeloo</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <span class="versie-badge">Versie juli 2026</span>
+    <h2>Privacyverklaring Zincafé Zweeloo</h2>
+    <p class="inleiding">Zincafé Zweeloo hecht veel waarde aan de bescherming van uw persoonsgegevens. In deze verklaring leggen wij uit welke gegevens wij verzamelen, waarom, hoe lang wij ze bewaren en welke rechten u heeft. Wij verwerken persoonsgegevens in overeenstemming met de <strong>Algemene Verordening Gegevensbescherming (AVG)</strong> en de Nederlandse uitvoeringswetgeving (UAVG).</p>
+
+    <h3>1. Verwerkingsverantwoordelijke</h3>
+    <div class="contact-blok">
+      <strong>Zincafé Zweeloo</strong>
+      Klooster 4, Zweeloo<br>
+      E-mail: <a href="mailto:zincafe-zweeloo@proton.me">zincafe-zweeloo@proton.me</a><br>
+      Website: <a href="https://www.zincafe-zweeloo.nl">www.zincafe-zweeloo.nl</a>
+    </div>
+
+    <h3>2. Welke persoonsgegevens verzamelen wij?</h3>
+    <p>Wij verzamelen de volgende gegevens wanneer u zich aanmeldt voor een activiteit of interesse kenbaar maakt:</p>
+    <ul>
+      <li><strong>Naam</strong> — voor- en achternaam</li>
+      <li><strong>E-mailadres</strong> — voor bevestigingen en communicatie over activiteiten</li>
+      <li><strong>Telefoonnummer</strong> (optioneel) — voor contact indien nodig</li>
+      <li><strong>Activiteitsvoorkeur</strong> — welke reeks of avond u kiest</li>
+      <li><strong>Opmerkingen</strong> (optioneel) — zoals bijzonderheden of vragen</li>
+      <li><strong>Tijdstip van aanmelding</strong> — automatisch vastgelegd</li>
+    </ul>
+
+    <h3>3. Waarom verzamelen wij deze gegevens?</h3>
+    <ul>
+      <li>Het verwerken en bevestigen van uw aanmelding voor een activiteit</li>
+      <li>Het informeren over wijzigingen, annuleringen of nieuwe activiteiten</li>
+      <li>Het sturen van informatie over nieuwe reeksen, als u daarvoor interesse heeft aangegeven</li>
+      <li>Het bijhouden van een deelnemerslijst voor organisatiedoeleinden</li>
+    </ul>
+
+    <h3>4. Rechtsgrond voor de verwerking</h3>
+    <ul>
+      <li><strong>Uitvoering van een overeenkomst</strong> (art. 6 lid 1 sub b AVG) — voor de verwerking van uw aanmelding.</li>
+      <li><strong>Toestemming</strong> (art. 6 lid 1 sub a AVG) — wanneer u zich aanmeldt voor de interesselijst. U kunt uw toestemming op elk moment intrekken.</li>
+      <li><strong>Gerechtvaardigd belang</strong> (art. 6 lid 1 sub f AVG) — voor de organisatie en administratie van activiteiten.</li>
+    </ul>
+
+    <h3>5. Hoe lang bewaren wij uw gegevens?</h3>
+    <ul>
+      <li><strong>Aanmeldgegevens:</strong> maximaal 2 jaar na afloop van de activiteit, tenzij u eerder verwijdering vraagt.</li>
+      <li><strong>Interessegegevens:</strong> zolang u op de interesselijst wilt staan. Uitschrijven kan via <a href="mailto:zincafe-zweeloo@proton.me">zincafe-zweeloo@proton.me</a>.</li>
+      <li><strong>E-mailcommunicatie:</strong> maximaal 2 jaar na het laatste contact.</li>
+    </ul>
+
+    <h3>6. Met wie delen wij uw gegevens?</h3>
+    <p>Wij verstrekken uw persoonsgegevens <strong>niet</strong> aan derden, tenzij dit noodzakelijk is voor de uitvoering van onze activiteiten of wettelijk verplicht. Wij verkopen uw gegevens nooit.</p>
+    <p>Wij maken gebruik van de volgende technische dienst waarbij gegevens worden verwerkt:</p>
+    <ul>
+      <li><strong>GitHub (Microsoft)</strong> — voor de technische verwerking van aanmeldingen via een beveiligde, privé-verbinding. GitHub voldoet aan de AVG. Zie <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</li>
+    </ul>
+
+    <h3>7. Beveiliging van uw gegevens</h3>
+    <ul>
+      <li>Versleutelde verbindingen (HTTPS) bij het versturen van formuliergegevens</li>
+      <li>Toegang tot de deelnemersadministratie is beveiligd met een persoonlijke PIN</li>
+      <li>Gegevens worden niet openbaar gepubliceerd</li>
+    </ul>
+
+    <h3>8. Uw rechten</h3>
+    <p>Op grond van de AVG heeft u de volgende rechten:</p>
+    <ul>
+      <li><strong>Inzage</strong> — opvragen welke gegevens wij van u hebben</li>
+      <li><strong>Rectificatie</strong> — onjuiste gegevens laten corrigeren</li>
+      <li><strong>Vergetelheid</strong> — vragen uw gegevens te verwijderen</li>
+      <li><strong>Beperking</strong> — vragen de verwerking tijdelijk te beperken</li>
+      <li><strong>Dataportabiliteit</strong> — uw gegevens in een gangbaar formaat opvragen</li>
+      <li><strong>Bezwaar</strong> — bezwaar maken tegen verwerking op basis van gerechtvaardigd belang</li>
+      <li><strong>Intrekking van toestemming</strong> — op elk moment uw toestemming intrekken</li>
+    </ul>
+    <p>U kunt uw rechten uitoefenen via <a href="mailto:zincafe-zweeloo@proton.me">zincafe-zweeloo@proton.me</a>. Wij reageren binnen 4 weken.</p>
+
+    <h3>9. Cookies</h3>
+    <p>Onze website maakt alleen gebruik van functionele cookies die strikt noodzakelijk zijn voor het werken van de site. Wij plaatsen geen tracking-, marketing- of analytische cookies zonder uw toestemming.</p>
+
+    <h3>10. Klachten</h3>
+    <p>Bent u niet tevreden? Dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens:</p>
+    <div class="highlight">
+      Autoriteit Persoonsgegevens<br>
+      Postbus 93374, 2509 AJ Den Haag<br>
+      <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">www.autoriteitpersoonsgegevens.nl</a>
+    </div>
+
+    <h3>11. Wijzigingen</h3>
+    <p>Wij kunnen deze privacyverklaring aanpassen bij wijzigingen in onze werkwijze of de wetgeving. De versiedatum bovenaan geeft aan wanneer de verklaring voor het laatst is bijgewerkt.</p>
+
+    <h3>12. Contact</h3>
+    <div class="contact-blok">
+      <strong>Zincafé Zweeloo</strong>
+      E-mail: <a href="mailto:zincafe-zweeloo@proton.me">zincafe-zweeloo@proton.me</a><br>
+      Website: <a href="https://www.zincafe-zweeloo.nl">www.zincafe-zweeloo.nl</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">← Terug naar de website</a> &nbsp;·&nbsp;
+  Zincafé Zweeloo &nbsp;·&nbsp; Privacyverklaring versie juli 2026
+</footer>
+
+</body>
+</html>

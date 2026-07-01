@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="image.jpg">
+<meta name="description" content="Aanmelden voor activiteiten van Zincafé Zweeloo — filosofische gesprekken over zingeving.">
+<title>Aanmelden — Zincafé Zweeloo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --warm-beige: #F5F0E8; --warm-beige-donker: #EDE6D8;
+    --white: #FFFFFF; --text-dark: #1E2B3A; --text-mid: #4A5568; --text-light: #718096;
+    --aarde-donker: #2C3E2D; --aarde-mid: #3D5140; --aarde-accent: #8B6914;
+    --blauw: #2E5B8A; --blauw-donker: #1E3D5C; --blauw-licht: #4A7BAB; --blauw-tint: #EAF1F8;
+    --oranje: #C8703A; --oranje-donker: #A5521E; --oranje-licht: #E09060; --oranje-tint: #FBF0E8;
+    --groen: #2E7D32; --rood: #C62828;
+    --shadow-sm: 0 2px 12px rgba(0,0,0,0.07); --shadow-md: 0 6px 24px rgba(0,0,0,0.11);
+    --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px;
+  }
+  body { font-family: 'Source Sans 3', -apple-system, sans-serif; line-height: 1.75; color: var(--text-dark); background: var(--warm-beige); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.2; letter-spacing: -0.01em; }
+
+  nav {
+    background: var(--aarde-donker); padding: 0 2rem;
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  nav a {
+    color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.8rem;
+    font-family: 'Source Sans 3', sans-serif; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 1rem 1.5rem; transition: all 0.25s ease;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a.actief { color: white; border-bottom-color: var(--oranje); }
+
+  header {
+    background: linear-gradient(160deg, var(--aarde-donker) 0%, var(--aarde-mid) 60%, #4a6741 100%);
+    color: white; padding: 4rem 2rem 5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(200,112,58,0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 80%, rgba(255,255,255,0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+  header::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, transparent, var(--oranje), var(--aarde-accent), var(--oranje), transparent);
+  }
+  header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; position: relative; z-index: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+  header p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; opacity: 0.8; margin-top: 0.5rem; position: relative; z-index: 1; }
+
+  .container { max-width: 640px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  .card {
+    background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0,0,0,0.05); overflow: hidden;
+  }
+  .card-header {
+    background: var(--warm-beige); padding: 2rem 2.5rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .card-header h2 { font-size: 1.6rem; color: var(--aarde-donker); font-weight: 600; }
+  .card-body { padding: 2rem 2.5rem 2.5rem; }
+
+  /* Type keuze */
+  .type-keuze { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .type-optie {
+    border: 2px solid rgba(0,0,0,0.1); border-radius: var(--radius-sm); padding: 1.25rem 1rem;
+    cursor: pointer; text-align: center; transition: all 0.2s ease; background: var(--warm-beige);
+  }
+  .type-optie input { display: none; }
+  .type-optie:hover { border-color: var(--aarde-mid); background: var(--warm-beige-donker); }
+  .type-optie.geselecteerd { border-color: var(--oranje); background: var(--oranje-tint); }
+  .type-optie .ikon { font-size: 1.8rem; margin-bottom: 0.4rem; display: block; }
+  .type-optie .lbl { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--aarde-donker); font-weight: 600; }
+  .type-optie .omschr { font-size: 0.8rem; color: var(--text-light); margin-top: 0.2rem; }
+
+  .interesse-uitleg {
+    background: var(--blauw-tint); border-left: 3px solid var(--blauw-licht);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 1rem 1.25rem;
+    font-size: 0.9rem; color: var(--blauw-donker); margin-bottom: 1.5rem; display: none;
+  }
+
+  /* Formulier elementen */
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; color: var(--text-dark); font-size: 0.9rem; margin-bottom: 0.45rem; font-weight: 600; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(0,0,0,0.12);
+    border-radius: var(--radius-sm); font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem; transition: all 0.2s ease; background: white; color: var(--text-dark);
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--aarde-mid); box-shadow: 0 0 0 3px rgba(44,62,45,0.1);
+  }
+  .form-group textarea { min-height: 100px; resize: vertical; }
+
+  /* Avonden checkboxes */
+  .avond-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .avond-optie {
+    display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 0.9rem;
+    border: 1.5px solid rgba(0,0,0,0.1); border-radius: var(--radius-sm);
+    cursor: pointer; font-size: 0.9rem; transition: all 0.15s; background: white;
+  }
+  .avond-optie:hover { background: var(--blauw-tint); border-color: var(--blauw-licht); }
+  .avond-optie:has(input:checked) { background: var(--blauw-tint); border-color: var(--blauw); }
+  .avond-optie input[type=checkbox]:checked + span { font-weight: 600; color: var(--blauw-donker); }
+
+  /* Privacy */
+  .privacyregel {
+    display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem;
+    color: var(--text-mid); margin-top: 1.5rem; cursor: pointer;
+  }
+  .privacyregel input { margin-top: 3px; flex-shrink: 0; width: 16px; height: 16px; cursor: pointer; accent-color: var(--aarde-donker); }
+  .privacyregel a { color: var(--blauw); }
+
+  .btn-verstuur {
+    width: 100%; background: var(--aarde-donker); color: white; padding: 1rem; border: none;
+    border-radius: var(--radius-sm); font-size: 1rem; font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600; cursor: pointer; margin-top: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-sm); letter-spacing: 0.02em;
+  }
+  .btn-verstuur:hover:not(:disabled) { background: var(--oranje); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .btn-verstuur:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .fout-melding {
+    background: rgba(198,40,40,0.08); color: var(--rood); border-radius: var(--radius-sm);
+    padding: 0.85rem 1rem; font-size: 0.875rem; margin-top: 1rem; display: none;
+  }
+
+  /* Bevestiging */
+  #bevestiging { display: none; text-align: center; padding: 4rem 2rem; }
+  #bevestiging .groot { font-size: 4rem; margin-bottom: 1.25rem; }
+  #bevestiging h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--aarde-donker); margin-bottom: 0.75rem; }
+  #bevestiging p { color: var(--text-mid); }
+
+  footer { text-align: center; padding: 2rem 1rem 3rem; font-size: 0.85rem; color: var(--text-light); }
+  footer a { color: var(--text-light); text-decoration: none; }
+  footer a:hover { color: var(--oranje); }
+
+  @media (max-width: 500px) {
+    .type-keuze { grid-template-columns: 1fr 1fr; }
+    .avond-grid { grid-template-columns: 1fr; }
+    .card-body { padding: 1.5rem; }
+    .card-header { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Zincafé</a>
+  <a href="filosofie-in-vogelvlucht.html">Filosofie in Vogelvlucht</a>
+  <a href="aanmelden.html" class="actief">Aanmelden</a>
+  <a href="https://www.instituutvoortoegepastefilosofie.nl" target="_blank" rel="noopener">Ons Instituut ↗</a>
+</nav>
+
+<header>
+  <h1>Aanmelden</h1>
+  <p>Zincafé Zweeloo — gesprekken die ertoe doen</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h2>Jouw aanmelding</h2>
+    </div>
+    <div class="card-body" id="formulier-body">
+
+      <!-- Type keuze -->
+      <div class="type-keuze">
+        <label class="type-optie geselecteerd" onclick="kiesType('aanmelden',this)">
+          <input type="radio" name="type" value="aanmelden" checked>
+          <span class="ikon">📋</span>
+          <div class="lbl">Aanmelden</div>
+          <div class="omschr">Voor een activiteit</div>
+        </label>
+        <label class="type-optie" onclick="kiesType('interesse',this)">
+          <input type="radio" name="type" value="interesse">
+          <span class="ikon">📨</span>
+          <div class="lbl">Op de hoogte</div>
+          <div class="omschr">Houd me geïnformeerd</div>
+        </label>
+      </div>
+
+      <!-- Uitleg voor interesse -->
+      <div id="sectie-interesse-tekst" class="interesse-uitleg">
+        Je meldt je aan om op de hoogte te blijven van nieuwe activiteiten van Zincafé Zweeloo. We sturen je een berichtje als er iets nieuws staat.
+      </div>
+
+      <!-- Activiteit (alleen bij aanmelden) -->
+      <div id="sectie-activiteit">
+        <div class="form-group">
+          <label>Activiteit *</label>
+          <select id="f-activiteit" onchange="activiteitGekozen()">
+            <option value="">— Bezig met laden… —</option>
+          </select>
+        </div>
+        <div id="sectie-avonden" style="display:none;" class="form-group">
+          <label>Voorkeur avonden <span style="font-weight:400;color:var(--text-light)">(meerdere mogelijk)</span></label>
+          <div class="avond-grid" id="avond-grid"></div>
+        </div>
+        <div id="sectie-groep" style="display:none;" class="form-group">
+          <label>Groepsvoorkeur</label>
+          <select id="f-groep"><option value="">Geen voorkeur</option></select>
+        </div>
+      </div>
+
+      <!-- Persoonsgegevens -->
+      <div class="form-group">
+        <label>Voornaam en achternaam *</label>
+        <input type="text" id="f-naam" placeholder="Bijv. Anna de Vries" required>
+      </div>
+      <div class="form-group">
+        <label>E-mailadres *</label>
+        <input type="email" id="f-email" placeholder="jouw@email.nl" required>
+      </div>
+      <div class="form-group">
+        <label>Telefoonnummer <span style="font-weight:400;color:var(--text-light)">(optioneel)</span></label>
+        <input type="tel" id="f-telefoon" placeholder="06 12345678">
+      </div>
+      <div class="form-group">
+        <label>Opmerking of bijzonderheden <span style="font-weight:400;color:var(--text-light)">(optioneel)</span></label>
+        <textarea id="f-opmerking" placeholder="Bijv. vragen, bijzonderheden, iemand meenemen…"></textarea>
+      </div>
+
+      <!-- AVG -->
+      <label class="privacyregel">
+        <input type="checkbox" id="f-privacy" onchange="controleerKnop()">
+        <span>Ik ga akkoord met de <a href="privacyverklaring.html">privacyverklaring</a> van Zincafé Zweeloo. Mijn gegevens worden alleen gebruikt voor communicatie over activiteiten.</span>
+      </label>
+
+      <button class="btn-verstuur" id="btn-verstuur" onclick="verstuurFormulier()" disabled>
+        Aanmelding versturen →
+      </button>
+      <div class="fout-melding" id="fout-melding"></div>
+
+    </div>
+
+    <!-- Bevestiging -->
+    <div id="bevestiging">
+      <div class="groot">✅</div>
+      <h2>Ontvangen!</h2>
+      <p id="bevestiging-tekst">Je aanmelding is ontvangen. We nemen zo snel mogelijk contact met je op.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">← Terug naar de website</a> &nbsp;·&nbsp;
+  <a href="privacyverklaring.html">Privacyverklaring</a> &nbsp;·&nbsp;
+  Zincafé Zweeloo
+</footer>
+
+<script>
+'use strict';
+const GIST_ID    = '8abf99bfcf4f0c24ba725d1b365c3cfd';
+// Token wordt meegegeven via de URL-hash (bijv. aanmelden.html#ghp_xxx)
+// Zo staat het token nooit in de broncode van de publieke repo.
+const GIST_TOKEN = location.hash.slice(1) || '';
+let activiteiten = [];
+let gekozenType  = 'aanmelden';
+
+async function laadActiviteiten() {
+  if (!GIST_TOKEN) {
+    const sel = document.getElementById('f-activiteit');
+    if (sel) sel.innerHTML = '<option value="">Neem contact op via e-mail om aan te melden</option>';
+    document.getElementById('sectie-activiteit').style.display = 'none';
+    document.getElementById('sectie-interesse-tekst').style.display = 'block';
+    document.getElementById('sectie-interesse-tekst').innerHTML =
+      'Aanmelden via dit formulier is alleen mogelijk via de persoonlijke aanmeldlink. Stuur een e-mail naar ' +
+      '<a href="mailto:zincafe-zweeloo@proton.me">zincafe-zweeloo@proton.me</a> om je aan te melden.';
+    document.getElementById('btn-verstuur').style.display = 'none';
+    document.getElementById('f-privacy').closest('label').style.display = 'none';
+    return;
+  }
+  try {
+    const resp = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      headers: { 'Authorization': `token ${GIST_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!resp.ok) return;
+    const gist = await resp.json();
+    const tekst = gist.files['zincafe-activiteiten.json']?.content;
+    if (!tekst) return;
+    activiteiten = JSON.parse(tekst);
+    vulActiviteitenDropdown();
+  } catch(e) { console.warn('Activiteiten laden mislukt:', e); }
+}
+
+function vulActiviteitenDropdown() {
+  const sel = document.getElementById('f-activiteit');
+  if (!sel) return;
+  if (activiteiten.length === 0) {
+    sel.innerHTML = '<option value="">Geen activiteiten beschikbaar op dit moment</option>';
+    return;
+  }
+  sel.innerHTML = '<option value="">— Kies een activiteit —</option>' +
+    activiteiten.map(a => {
+      const vol = a.beschikbaar <= 0;
+      return `<option value="${a.id}" ${vol ? 'disabled' : ''}>${a.naam} · ${formatDatum(a.datum)}${vol ? ' (VOL)' : ''}</option>`;
+    }).join('');
+}
+
+function formatDatum(iso) {
+  if (!iso) return '';
+  return new Date(iso + 'T00:00:00').toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' });
+}
+
+function kiesType(type, el) {
+  gekozenType = type;
+  document.querySelectorAll('.type-optie').forEach(o => o.classList.remove('geselecteerd'));
+  el.classList.add('geselecteerd');
+  const isAanmelden = type === 'aanmelden';
+  document.getElementById('sectie-activiteit').style.display = isAanmelden ? '' : 'none';
+  document.getElementById('sectie-interesse-tekst').style.display = isAanmelden ? 'none' : 'block';
+  controleerKnop();
+}
+
+function activiteitGekozen() {
+  const actId = document.getElementById('f-activiteit').value;
+  const act   = activiteiten.find(a => a.id === actId);
+
+  const sectieAvonden = document.getElementById('sectie-avonden');
+  const grid = document.getElementById('avond-grid');
+  if (act && act.type === 'reeks' && activiteiten.filter(a => a.reeksNaam === act.reeksNaam).length > 1) {
+    const reeksAvonden = activiteiten.filter(a => a.reeksNaam === act.reeksNaam);
+    grid.innerHTML = reeksAvonden.map(a =>
+      `<label class="avond-optie">
+        <input type="checkbox" name="avond" value="${a.id}" checked>
+        <span>${formatDatum(a.datum)}</span>
+      </label>`
+    ).join('');
+    sectieAvonden.style.display = '';
+  } else {
+    sectieAvonden.style.display = 'none';
+    grid.innerHTML = '';
+  }
+
+  const sectieGroep = document.getElementById('sectie-groep');
+  const grpSel = document.getElementById('f-groep');
+  if (act && act.groepen && act.groepen.length > 0) {
+    grpSel.innerHTML = '<option value="">Geen voorkeur</option>' +
+      act.groepen.map(g => `<option value="${g.id}">${g.naam}</option>`).join('');
+    sectieGroep.style.display = '';
+  } else {
+    sectieGroep.style.display = 'none';
+  }
+  controleerKnop();
+}
+
+function controleerKnop() {
+  const privacy = document.getElementById('f-privacy').checked;
+  const naam    = document.getElementById('f-naam').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const actId   = document.getElementById('f-activiteit').value;
+  const ok = privacy && naam && email && (gekozenType === 'interesse' || actId);
+  document.getElementById('btn-verstuur').disabled = !ok;
+}
+
+document.addEventListener('input', controleerKnop);
+document.addEventListener('change', controleerKnop);
+
+async function verstuurFormulier() {
+  const naam      = document.getElementById('f-naam').value.trim();
+  const email     = document.getElementById('f-email').value.trim();
+  const telefoon  = document.getElementById('f-telefoon').value.trim();
+  const opmerking = document.getElementById('f-opmerking').value.trim();
+  const actId     = document.getElementById('f-activiteit').value;
+  const act       = activiteiten.find(a => a.id === actId);
+  const groepId   = document.getElementById('f-groep').value;
+
+  const geselecteerdeAvonden = [...document.querySelectorAll('input[name=avond]:checked')].map(cb => {
+    const a = activiteiten.find(x => x.id === cb.value);
+    return a ? formatDatum(a.datum) : cb.value;
+  });
+
+  const item = {
+    _id:           Date.now().toString(36) + Math.random().toString(36).slice(2,5),
+    _aangemeld:    new Date().toISOString(),
+    type:          gekozenType,
+    naam, email, telefoon, opmerking,
+    activiteit:    act?.naam || '',
+    activiteitId:  actId,
+    avondVoorkeur: geselecteerdeAvonden.join(', '),
+    groepVoorkeur: act?.groepen?.find(g => g.id === groepId)?.naam || '',
+  };
+
+  const btn  = document.getElementById('btn-verstuur');
+  const fout = document.getElementById('fout-melding');
+  btn.disabled = true;
+  btn.textContent = 'Bezig met versturen…';
+  fout.style.display = 'none';
+
+  try {
+    const resp = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      headers: { 'Authorization': `token ${GIST_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!resp.ok) throw new Error('Verbinding mislukt');
+    const gist   = await resp.json();
+    const huidig = JSON.parse(gist.files['zincafe-inbox.json']?.content || '[]');
+    huidig.push(item);
+
+    const patch = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `token ${GIST_TOKEN}`, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+      body: JSON.stringify({ files: { 'zincafe-inbox.json': { content: JSON.stringify(huidig, null, 2) } } })
+    });
+    if (!patch.ok) throw new Error('Opslaan mislukt');
+
+    document.getElementById('formulier-body').style.display = 'none';
+    const bev = document.getElementById('bevestiging');
+    bev.style.display = 'block';
+    document.getElementById('bevestiging-tekst').textContent = gekozenType === 'interesse'
+      ? 'We houden je op de hoogte van nieuwe activiteiten van Zincafé Zweeloo!'
+      : `Je aanmelding voor "${act?.naam || 'de activiteit'}" is ontvangen. We bevestigen zo snel mogelijk.`;
+  } catch(e) {
+    fout.textContent = 'Er ging iets mis bij het versturen. Probeer het opnieuw of stuur een e-mail naar zincafe-zweeloo@proton.me';
+    fout.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Aanmelding versturen →';
+  }
+}
+
+laadActiviteiten();
+</script>
+</body>
+</html>
