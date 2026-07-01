@@ -58,7 +58,28 @@
   footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
   footer a:hover { color: var(--oranje); }
   .footer-instituut { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
-  @media (max-width: 768px) { .section-inner { padding: 2rem 1.5rem; } .container { padding: 2rem 1rem; } nav { flex-wrap: wrap; } nav a { padding: 0.75rem 1rem; font-size: 0.75rem; } }
+  .avond-checkboxes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.25rem; }
+  .avond-check { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.9rem; border: 1.5px solid rgba(0,0,0,0.1); border-radius: var(--radius-sm); cursor: pointer; font-size: 0.9rem; background: white; transition: all 0.15s; }
+  .avond-check:hover { background: #EAF1F8; border-color: #4A7BAB; }
+  .avond-check:has(input:checked) { background: #EAF1F8; border-color: #2E5B8A; font-weight: 600; color: #1E3D5C; }
+  .avond-check input { width: 16px; height: 16px; accent-color: var(--aarde-donker); flex-shrink: 0; }
+
+  /* Privacy modal */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: white; border-radius: var(--radius-lg); max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .modal-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1; }
+  .modal-header h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--aarde-donker); }
+  .modal-sluit { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); line-height: 1; padding: 0.25rem; }
+  .modal-sluit:hover { color: var(--text-dark); }
+  .modal-body { padding: 1.5rem 2rem 2rem; font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+  .modal-body h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--aarde-donker); margin: 1.25rem 0 0.4rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.07); }
+  .modal-body h4:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .modal-body ul { margin: 0.4rem 0 0.8rem 1.25rem; }
+  .modal-body ul li { margin-bottom: 0.35rem; }
+  .modal-body a { color: var(--blauw); }
+
+  @media (max-width: 768px) { .section-inner { padding: 2rem 1.5rem; } .container { padding: 2rem 1rem; } nav { flex-wrap: wrap; } nav a { padding: 0.75rem 1rem; font-size: 0.75rem; } .avond-checkboxes { grid-template-columns: 1fr; } .modal-body { padding: 1rem 1.25rem 1.5rem; } }
 </style>
 </head>
 <body>
@@ -117,15 +138,14 @@
           </div>
 
           <div class="form-group" id="avondWrap" style="display:none;">
-            <label for="avond">Voorkeur avond <span style="font-weight:400;color:var(--text-light)">(optioneel)</span></label>
-            <select id="avond" name="avond">
-              <option value="">— Geen voorkeur —</option>
-              <option value="Maandag">Maandag</option>
-              <option value="Dinsdag">Dinsdag</option>
-              <option value="Woensdag">Woensdag</option>
-              <option value="Donderdag">Donderdag</option>
-              <option value="Vrijdag">Vrijdag</option>
-            </select>
+            <label>Voorkeur avonden <span style="font-weight:400;color:var(--text-light)">(meerdere mogelijk)</span></label>
+            <div class="avond-checkboxes">
+              <label class="avond-check"><input type="checkbox" name="avond" value="Maandag"><span>Maandag</span></label>
+              <label class="avond-check"><input type="checkbox" name="avond" value="Dinsdag"><span>Dinsdag</span></label>
+              <label class="avond-check"><input type="checkbox" name="avond" value="Woensdag"><span>Woensdag</span></label>
+              <label class="avond-check"><input type="checkbox" name="avond" value="Donderdag"><span>Donderdag</span></label>
+              <label class="avond-check"><input type="checkbox" name="avond" value="Vrijdag"><span>Vrijdag</span></label>
+            </div>
           </div>
 
           <div class="form-group">
@@ -135,7 +155,7 @@
 
           <label class="privacyregel">
             <input type="checkbox" id="privacy" name="privacy" required>
-            <span>Ik ga akkoord met de <a href="privacyverklaring.html">privacyverklaring</a> van Zincafé Zweeloo.</span>
+            <span>Ik ga akkoord met de <a href="#" onclick="document.getElementById('privacyModal').classList.add('open');return false;">privacyverklaring</a> van Zincafé Zweeloo.</span>
           </label>
 
           <button type="submit" class="btn-submit">Aanmelding versturen →</button>
@@ -198,5 +218,36 @@
     }
   });
 </script>
+
+<!-- Privacy modal -->
+<div class="modal-overlay" id="privacyModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titel">
+    <div class="modal-header">
+      <h3 id="modal-titel">Privacyverklaring</h3>
+      <button class="modal-sluit" onclick="document.getElementById('privacyModal').classList.remove('open')" aria-label="Sluiten">✕</button>
+    </div>
+    <div class="modal-body">
+      <p>Zincafé Zweeloo verwerkt uw persoonsgegevens in overeenstemming met de AVG (Algemene Verordening Gegevensbescherming).</p>
+      <h4>Wat verzamelen wij?</h4>
+      <ul>
+        <li>Naam, e-mailadres en telefoonnummer (optioneel)</li>
+        <li>Activiteitsvoorkeur en opmerkingen</li>
+        <li>Tijdstip van aanmelding</li>
+      </ul>
+      <h4>Waarvoor gebruiken wij uw gegevens?</h4>
+      <ul>
+        <li>Verwerken en bevestigen van uw aanmelding</li>
+        <li>Informeren over wijzigingen of nieuwe activiteiten</li>
+        <li>Bijhouden van de deelnemerslijst</li>
+      </ul>
+      <h4>Hoe lang bewaren wij uw gegevens?</h4>
+      <p>Maximaal 2 jaar na afloop van de activiteit, of totdat u verwijdering vraagt.</p>
+      <h4>Uw rechten</h4>
+      <p>U heeft het recht op inzage, rectificatie, verwijdering en bezwaar. Neem contact op via <a href="mailto:zincafe-zweeloo@proton.me">zincafe-zweeloo@proton.me</a>.</p>
+      <p style="margin-top:1rem;"><a href="privacyverklaring.html" target="_blank">Lees de volledige privacyverklaring →</a></p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
