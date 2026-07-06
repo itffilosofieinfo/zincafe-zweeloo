@@ -500,6 +500,12 @@
 
         .form-group textarea { min-height: 100px; resize: vertical; }
 
+        .avond-checkboxes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.25rem; }
+        .avond-check { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.9rem; border: 1.5px solid rgba(0,0,0,0.1); border-radius: var(--radius-sm); cursor: pointer; font-size: 0.9rem; background: white; transition: all 0.15s; }
+        .avond-check:hover { background: var(--oranje-tint); border-color: var(--oranje); }
+        .avond-check:has(input:checked) { background: var(--oranje-tint); border-color: var(--oranje); font-weight: 600; color: var(--oranje-donker); }
+        .avond-check input { width: 16px; height: 16px; accent-color: var(--oranje); flex-shrink: 0; }
+
         .btn-submit {
             background: var(--aarde-donker);
             color: white;
@@ -742,15 +748,14 @@
                             <input type="tel" id="telefoon" name="telefoon">
                         </div>
                         <div class="form-group">
-                            <label for="avonden">Voorkeur avonden</label>
-                            <select id="avonden" name="avonden">
-                                <option value="">-- Geen voorkeur --</option>
-                                <option value="maandag">Maandag</option>
-                                <option value="dinsdag">Dinsdag</option>
-                                <option value="woensdag">Woensdag</option>
-                                <option value="donderdag">Donderdag</option>
-                                <option value="vrijdag">Vrijdag</option>
-                            </select>
+                            <label>Voorkeur avonden <span style="font-weight:400;color:var(--text-light)">(meerdere mogelijk)</span></label>
+                            <div class="avond-checkboxes">
+                                <label class="avond-check"><input type="checkbox" name="avond" value="Maandag"><span>Maandag</span></label>
+                                <label class="avond-check"><input type="checkbox" name="avond" value="Dinsdag"><span>Dinsdag</span></label>
+                                <label class="avond-check"><input type="checkbox" name="avond" value="Woensdag"><span>Woensdag</span></label>
+                                <label class="avond-check"><input type="checkbox" name="avond" value="Donderdag"><span>Donderdag</span></label>
+                                <label class="avond-check"><input type="checkbox" name="avond" value="Vrijdag"><span>Vrijdag</span></label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="opmerking">Eventuele vragen of opmerkingen</label>
