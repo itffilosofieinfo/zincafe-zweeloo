@@ -253,26 +253,34 @@
 
         /* ── HERO / HEADER ── */
         header {
-            background: linear-gradient(160deg, var(--aarde-donker) 0%, var(--aarde-mid) 60%, #4a6741 100%);
+            min-height: 100vh;
+            background-image: url('kapschuur.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 5rem 2rem 6rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
         }
 
-        /* Subtiele textuurlaag */
         header::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse at 80% 20%, rgba(200,112,58,0.18) 0%, transparent 55%),
-                radial-gradient(ellipse at 15% 80%, rgba(255,255,255,0.04) 0%, transparent 40%);
+            background: linear-gradient(
+                to bottom,
+                rgba(20,30,20,0.55) 0%,
+                rgba(20,30,20,0.72) 60%,
+                rgba(20,30,20,0.85) 100%
+            );
             pointer-events: none;
         }
 
-        /* Decoratieve lijn onder de hero */
         header::after {
             content: '';
             position: absolute;
@@ -284,39 +292,42 @@
         }
 
         .header-logo {
-            max-width: 130px;
+            max-width: 90px;
             height: auto;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 2rem;
             display: block;
             border-radius: var(--radius-md);
             position: relative;
             z-index: 1;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            border: 2px solid rgba(255,255,255,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+            opacity: 0.9;
         }
 
         header h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(3rem, 8vw, 5.5rem);
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             position: relative;
             z-index: 1;
             color: white;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+            letter-spacing: -0.02em;
         }
 
         header .tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-size: clamp(1.15rem, 2.8vw, 1.55rem);
             font-weight: 400;
-            opacity: 0.85;
+            opacity: 0.88;
             position: relative;
             z-index: 1;
             letter-spacing: 0.02em;
+            max-width: 560px;
+            margin: 0 auto;
         }
 
-        /* Decoratieve streepjes rondom tagline */
         .tagline-wrapper {
             display: flex;
             align-items: center;
@@ -325,6 +336,7 @@
             position: relative;
             z-index: 1;
             margin-top: 0.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .tagline-ornament {
@@ -334,12 +346,131 @@
             flex-shrink: 0;
         }
 
+        .hero-cta {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            background: var(--oranje);
+            color: white;
+            text-decoration: none;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            padding: 0.95rem 2.4rem;
+            border-radius: 50px;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-cta:hover {
+            background: var(--oranje-donker);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+        }
+
+        /* ── SCROLL FADE-IN ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+
         /* ── CONTAINER ── */
         .container {
             max-width: 960px;
             margin: 0 auto;
             padding: 3.5rem 2rem;
         }
+
+        /* Extra achtergrondvarianten */
+        section.groen-zacht {
+            background: #f0f4f0;
+        }
+        section.grijs-zacht {
+            background: #f4f4f2;
+        }
+
+        /* Extra ademruimte tussen secties */
+        .section-inner {
+            padding-top: 4.5rem !important;
+            padding-bottom: 4.5rem !important;
+        }
+
+        /* Persoonlijk citaat begeleider */
+        .facilitator-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--oranje-donker);
+            border-left: 3px solid var(--oranje);
+            padding-left: 1rem;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ── VRAGEN BLOK ── */
+        .vragen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .vraag-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.1rem 1.3rem;
+            font-style: italic;
+            color: var(--text-mid);
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            border-left: 3px solid var(--oranje);
+            line-height: 1.5;
+        }
+
+        /* ── FAQ ACCORDION ── */
+        .faq-item-toggle {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .faq-toggle-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: left;
+            gap: 1rem;
+        }
+        .faq-toggle-btn:hover { color: var(--oranje); }
+        .faq-chevron {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        .faq-item-toggle.open .faq-chevron { transform: rotate(180deg); }
+        .faq-collapsible {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+        .faq-collapsible-inner {
+            padding-bottom: 1.2rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+        }
+        .faq-item-toggle.open .faq-collapsible { max-height: 400px; }
 
         /* ── NEXT EVENT BANNER ── */
         .next-event-banner {
@@ -1021,6 +1152,8 @@
             <p class="tagline">Gesprekken die ertoe doen</p>
             <span class="tagline-ornament"></span>
         </div>
+        <p style="position:relative;z-index:1;font-size:1.1rem;opacity:0.82;max-width:500px;margin:0 auto 2.5rem;font-style:italic;">Samen onderzoeken we de vragen die het leven betekenis geven.</p>
+        <a href="#bijeenkomsten" class="hero-cta">Bekijk de bijeenkomsten →</a>
     </header>
 
     <div class="container">
@@ -1072,6 +1205,22 @@
             </div>
         </section>
 
+        <!-- ── WAAR PRATEN WE OVER ── -->
+        <section class="groen-zacht fade-in">
+            <div class="section-inner">
+                <h2>Waar praten we over?</h2>
+                <p style="max-width:580px;">Geen abstracte theorie, maar vragen die je zelf herkent. Een kleine greep:</p>
+                <div class="vragen-grid">
+                    <div class="vraag-item">Wat maakt een leven betekenisvol?</div>
+                    <div class="vraag-item">Wanneer voel je je echt vrij?</div>
+                    <div class="vraag-item">Is geluk iets dat je kunt kiezen?</div>
+                    <div class="vraag-item">Wat betekent vriendschap?</div>
+                    <div class="vraag-item">Hoe ga je om met verlies?</div>
+                    <div class="vraag-item">Wanneer doe je het goed genoeg?</div>
+                </div>
+            </div>
+        </section>
+
         <!-- ── NIEUWS ── -->
         <section class="beige" id="nieuws">
             <div class="section-inner">
@@ -1115,7 +1264,7 @@
         </section>
 
         <!-- ── BEGELEIDERS (beige) ── -->
-        <section class="beige">
+        <section class="beige fade-in">
             <div class="section-inner">
                 <h2>De begeleiders</h2>
                 <div class="facilitator-grid">
@@ -1124,12 +1273,14 @@
                         <h3>Sjoerd Slagter</h3>
                         <p class="facilitator-role">Filosoof & Gespreksbegeleider</p>
                         <p>Sjoerd is bioloog en filosoof. Hij doceert aan de Hogeschool voor Toegepaste Filosofie (HTF) en is gespecialiseerd in toegepaste filosofie, bestuur en onderwijs. Hij is mede-auteur van de methode Leren Filosoferen.</p>
+                        <p class="facilitator-quote">"Ik geloof dat filosofie pas echt interessant wordt als ze over jouw eigen leven gaat."</p>
                     </div>
                     <div class="facilitator">
                         <img src="nathalie.jpg" alt="Nathalie van Hooff" loading="lazy" class="facilitator-photo">
                         <h3>Nathalie van Hooff</h3>
                         <p class="facilitator-role">Trainer & Gespreksbegeleider</p>
                         <p>Nathalie brengt rust en diepgang in gesprekken. Ze creëert een veilige ruimte waarin mensen zich durven uit te spreken.</p>
+                        <p class="facilitator-quote">"Een goed gesprek begint met nieuwsgierigheid, niet met gelijk willen krijgen."</p>
                     </div>
                 </div>
             </div>
@@ -1204,9 +1355,11 @@
         </section>
 
         <!-- ── FAQ (wit) ── -->
-        <section class="wit">
+        <section class="wit fade-in">
             <div class="section-inner">
                 <h2>Veelgestelde vragen</h2>
+
+                <!-- Eerste drie: altijd zichtbaar -->
                 <div class="faq-item">
                     <div class="faq-question">Wat is het Zincafé Zweeloo precies?</div>
                     <div class="faq-answer">Het Zincafé is een kleinschalige ontmoetingsplek waar we samen vertragen en de tijd nemen voor vragen die ertoe doen. In een open gesprek onderzoeken we ervaringen en thema's die raken aan de zin van het leven.</div>
@@ -1225,13 +1378,25 @@
                     <div class="faq-question">Moet ik filosofie kennen om mee te doen?</div>
                     <div class="faq-answer">Absoluut niet! Het Zincafé is juist bedoeld voor iedereen. Je hoeft geen voorkennis te hebben. Nieuwsgierigheid en bereidheid om te luisteren en na te denken is het belangrijkste.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Wat kost deelname?</div>
-                    <div class="faq-answer">Deelname is gratis. Een vrijwillige bijdrage voor koffie of thee is welkom, maar volledig optioneel.</div>
+
+                <!-- Rest: inklapbaar -->
+                <div class="faq-item-toggle" id="faq-kosten">
+                    <button class="faq-toggle-btn" onclick="toggleFaq('faq-kosten')">
+                        <span>Wat kost deelname?</span>
+                        <span class="faq-chevron">▾</span>
+                    </button>
+                    <div class="faq-collapsible">
+                        <div class="faq-collapsible-inner">Deelname is gratis. Een vrijwillige bijdrage voor koffie of thee is welkom, maar volledig optioneel.</div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Kan ik iemand meenemen?</div>
-                    <div class="faq-answer">Ja, dat kan zeker! Laat het ons even weten bij je aanmelding, zodat we rekening kunnen houden met het aantal deelnemers.</div>
+                <div class="faq-item-toggle" id="faq-meenemen">
+                    <button class="faq-toggle-btn" onclick="toggleFaq('faq-meenemen')">
+                        <span>Kan ik iemand meenemen?</span>
+                        <span class="faq-chevron">▾</span>
+                    </button>
+                    <div class="faq-collapsible">
+                        <div class="faq-collapsible-inner">Ja, dat kan zeker! Laat het ons even weten bij je aanmelding, zodat we rekening kunnen houden met het aantal deelnemers.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1535,6 +1700,26 @@
                 groepWrap.style.display = (val === 'zincafe-nieuw-seizoen' || val === 'beide') ? 'block' : 'none';
             });
         }
+    </script>
+
+    <script>
+        // ── FAQ ACCORDION ──
+        function toggleFaq(id) {
+            const item = document.getElementById(id);
+            item.classList.toggle('open');
+        }
+
+        // ── SCROLL FADE-IN ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 
 </body>
