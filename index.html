@@ -1056,7 +1056,8 @@
             background: rgba(255,255,255,0.5);
         }
 
-        .archief-inhoud[hidden] { display: none; }
+        .archief-inhoud { display: none; }
+        .archief-inhoud.open { display: block; }
 
         /* Archiefkaartjes iets subtieler */
         .archief-inhoud .bijeenkomst-card {
@@ -1329,7 +1330,7 @@
                         <span>📚 Terugblikken op seizoen 2025–2026</span>
                         <span class="archief-chevron">▾</span>
                     </button>
-                    <div class="archief-inhoud" id="archiefInhoud" hidden>
+                    <div class="archief-inhoud" id="archiefInhoud">
                         <div class="groepen-uitleg" style="margin-bottom:1.5rem; margin-top:1.5rem;">
                             <h3>💡 Hoe werkten de groepen?</h3>
                             <p>We hadden twee parallelle groepen die hetzelfde programma doorliepen. Beide groepen bespraken dezelfde thema's op verschillende data.</p>
@@ -1682,13 +1683,9 @@
         const inhoud = document.getElementById('archiefInhoud');
         if (toggle && inhoud) {
             toggle.addEventListener('click', () => {
-                const open = toggle.getAttribute('aria-expanded') === 'true';
+                const open = inhoud.classList.contains('open');
+                inhoud.classList.toggle('open');
                 toggle.setAttribute('aria-expanded', String(!open));
-                if (open) {
-                    inhoud.hidden = true;
-                } else {
-                    inhoud.hidden = false;
-                }
             });
         }
 
