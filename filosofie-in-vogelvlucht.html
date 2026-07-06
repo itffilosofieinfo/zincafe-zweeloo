@@ -121,21 +121,31 @@
 
         /* ── HERO ── */
         header {
-            background: linear-gradient(160deg, var(--aarde-donker) 0%, var(--aarde-mid) 60%, #4a6741 100%);
+            min-height: 100vh;
+            background-image: url('filosofen-illustratie.jpg');
+            background-size: cover;
+            background-position: center top;
             color: white;
-            padding: 5rem 2rem 6rem;
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
         }
 
         header::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse at 80% 20%, rgba(200,112,58,0.18) 0%, transparent 55%),
-                radial-gradient(ellipse at 15% 80%, rgba(255,255,255,0.04) 0%, transparent 40%);
+            background: linear-gradient(
+                to bottom,
+                rgba(15,20,15,0.45) 0%,
+                rgba(15,20,15,0.68) 55%,
+                rgba(15,20,15,0.82) 100%
+            );
             pointer-events: none;
         }
 
@@ -148,15 +158,16 @@
         }
 
         .header-logo {
-            max-width: 130px;
+            max-width: 90px;
             height: auto;
             margin: 0 auto 2rem;
             display: block;
             border-radius: var(--radius-md);
             position: relative;
             z-index: 1;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            border: 2px solid rgba(255,255,255,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+            opacity: 0.9;
         }
 
         .header-label {
@@ -175,13 +186,14 @@
         }
 
         header h1 {
-            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            font-size: clamp(3rem, 8vw, 5.5rem);
             font-weight: 700;
             margin-bottom: 0.75rem;
             position: relative;
             z-index: 1;
             color: white;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+            letter-spacing: -0.02em;
         }
 
         .tagline-wrapper {
@@ -192,6 +204,7 @@
             position: relative;
             z-index: 1;
             margin-top: 0.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .tagline-ornament {
@@ -204,10 +217,48 @@
         header .tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            opacity: 0.85;
+            font-size: clamp(1.15rem, 2.8vw, 1.55rem);
+            opacity: 0.88;
             letter-spacing: 0.02em;
         }
+
+        .hero-cta {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            background: var(--oranje);
+            color: white;
+            text-decoration: none;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.04em;
+            padding: 0.95rem 2.4rem;
+            border-radius: 50px;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-cta:hover {
+            background: var(--oranje-donker);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+        }
+
+        /* ── SCROLL FADE-IN ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Extra achtergrondvarianten */
+        section.groen-zacht { background: #f0f4f0; }
+        section.grijs-zacht { background: #f4f4f2; }
 
         /* ── CONTAINER ── */
         .container {
@@ -228,7 +279,7 @@
 
         section:hover { box-shadow: var(--shadow-md); }
 
-        .section-inner { padding: 3.5rem; }
+        .section-inner { padding: 4.5rem 3.5rem; }
 
         section.wit { background: white; }
         section.beige { background: var(--warm-beige-donker); border-color: rgba(0,0,0,0.06); }
@@ -563,12 +614,14 @@
             <p class="tagline">Van Aristoteles tot Žižek</p>
             <span class="tagline-ornament"></span>
         </div>
+        <p style="position:relative;z-index:1;font-size:1.1rem;opacity:0.82;max-width:500px;margin:0 auto 2.5rem;font-style:italic;">Twee avonden die je laten zien hoe filosofen denken — en hoe jij dat ook kunt.</p>
+        <a href="#aanmelden" class="hero-cta">Meld je aan →</a>
     </header>
 
     <div class="container">
 
         <!-- ── INTRO (wit) ── -->
-        <section class="wit">
+        <section class="wit fade-in">
             <div class="section-inner">
                 <h2>Over gewone dingen is het moeilijk nadenken</h2>
                 <p>In het Zincafé Zweeloo staan vragen centraal die raken aan hoe we leven, kiezen en ons tot elkaar verhouden.</p>
@@ -578,7 +631,7 @@
         </section>
 
         <!-- ── VIER VRAGEN (beige) ── -->
-        <section class="beige">
+        <section class="beige fade-in">
             <div class="section-inner">
                 <h2>Vier vragen als leidraad</h2>
                 <p>Door de geschiedenis heen keren steeds dezelfde kernvragen terug. Ze vormen het uitgangspunt van deze reeks:</p>
@@ -598,7 +651,7 @@
         </section>
 
         <!-- ── TIJDLIJN DENKERS (wit) ── -->
-        <section class="wit">
+        <section class="wit fade-in">
             <div class="section-inner">
                 <h2>Van de oudheid tot nu</h2>
                 <p>We volgen een rode draad door de westerse filosofiegeschiedenis — niet als volledig overzicht, maar als oriëntatie op het grotere geheel.</p>
@@ -644,7 +697,7 @@
         </section>
 
         <!-- ── PRAKTISCH (beige) ── -->
-        <section class="beige">
+        <section class="beige fade-in">
             <div class="section-inner">
                 <h2>Praktische informatie</h2>
                 <div class="praktisch-grid">
@@ -673,7 +726,7 @@
         </section>
 
         <!-- ── AANMELDEN (wit) ── -->
-        <section class="wit">
+        <section class="wit fade-in">
             <div class="section-inner">
                 <h2>Aanmelden voor Filosofie in Vogelvlucht</h2>
                 <p style="text-align: center; margin-bottom: 2rem;">
@@ -796,6 +849,19 @@
                 submitBtn.textContent = 'Aanmelden';
             }
         });
+    </script>
+
+    <script>
+        // ── SCROLL FADE-IN ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 
 </body>
