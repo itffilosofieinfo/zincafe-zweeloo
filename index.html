@@ -254,9 +254,6 @@
         /* ── HERO / HEADER ── */
         header {
             min-height: 100vh;
-            background-image: url('kapschuur.jpg');
-            background-size: cover;
-            background-position: center;
             color: white;
             text-align: center;
             position: relative;
@@ -266,6 +263,16 @@
             align-items: center;
             justify-content: center;
             padding: 6rem 2rem;
+        }
+
+        header .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('Zincafe-bijeenkomst.png');
+            background-size: cover;
+            background-position: center;
+            filter: sepia(40%) brightness(0.55) saturate(0.8);
+            z-index: 0;
         }
 
         header::before {
@@ -1146,6 +1153,7 @@
 
     <!-- ── HEADER ── -->
     <header>
+        <div class="hero-bg"></div>
         <img src="image.jpg" alt="Zincafé Zweeloo Logo" class="header-logo">
         <h1>Zincafé Zweeloo</h1>
         <div class="tagline-wrapper">
