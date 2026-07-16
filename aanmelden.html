@@ -102,7 +102,7 @@
     <div class="section-inner">
       <h2>Aanmelden voor het nieuwe seizoen</h2>
       <p style="text-align:center; max-width:560px; margin:0 auto 0.5rem;">
-        Meld je aan voor het Zincafé of Filosofie in Vogelvlucht — of geef aan dat je op de hoogte wilt blijven. We nemen contact met je op zodra de data definitief zijn.
+        Meld je aan voor het Zincafé of Filosofie in Vogelvlucht. De aanmeldingen voor het nieuwe seizoen zijn open.
       </p>
       <div class="aanmeld-form">
         <form id="aanmeldForm" action="https://formspree.io/f/mwpakbbq" method="POST">
@@ -111,14 +111,15 @@
             <label for="activiteit">Waarvoor wil je je aanmelden? *</label>
             <select id="activiteit" name="activiteit" required>
               <option value="">— Maak een keuze —</option>
-              <optgroup label="Zincafé Zweeloo">
-                <option value="Zincafé – nieuw seizoen (vijf avonden)">Zincafé – nieuw seizoen (vijf avonden)</option>
+              <optgroup label="Zincafé Zweeloo — vijf avonden">
+                <option value="Zincafé – Groep 1 (dinsdagen)">Zincafé – Groep 1 · dinsdagen (10 nov, 15 dec, 19 jan, 16 feb, 16 mrt)</option>
+                <option value="Zincafé – Groep 2 (donderdagen)">Zincafé – Groep 2 · donderdagen (12 nov, 17 dec, 21 jan, 18 feb, 18 mrt)</option>
               </optgroup>
-              <optgroup label="Filosofie in Vogelvlucht">
-                <option value="Filosofie in Vogelvlucht – nieuw seizoen (twee avonden)">Filosofie in Vogelvlucht – nieuw seizoen (twee avonden)</option>
+              <optgroup label="Filosofie in Vogelvlucht — twee avonden">
+                <option value="Filosofie in Vogelvlucht (ma 26 okt &amp; ma 2 nov)">Filosofie in Vogelvlucht · ma 26 oktober &amp; ma 2 november</option>
               </optgroup>
-              <option value="Beide: Zincafé én Filosofie in Vogelvlucht">Beide activiteiten</option>
-              <option value="Op de hoogte houden">Houd mij op de hoogte (nog geen keuze)</option>
+              <option value="Zincafé én Filosofie in Vogelvlucht – Groep 1">Beide · Groep 1 (dinsdagen + FiV)</option>
+              <option value="Zincafé én Filosofie in Vogelvlucht – Groep 2">Beide · Groep 2 (donderdagen + FiV)</option>
             </select>
           </div>
 
@@ -135,17 +136,6 @@
           <div class="form-group">
             <label for="telefoon">Telefoonnummer <span style="font-weight:400;color:var(--text-light)">(optioneel)</span></label>
             <input type="tel" id="telefoon" name="telefoon" placeholder="06 12345678">
-          </div>
-
-          <div class="form-group" id="avondWrap" style="display:none;">
-            <label>Voorkeur avonden <span style="font-weight:400;color:var(--text-light)">(meerdere mogelijk)</span></label>
-            <div class="avond-checkboxes">
-              <label class="avond-check"><input type="checkbox" name="avond" value="Maandag"><span>Maandag</span></label>
-              <label class="avond-check"><input type="checkbox" name="avond" value="Dinsdag"><span>Dinsdag</span></label>
-              <label class="avond-check"><input type="checkbox" name="avond" value="Woensdag"><span>Woensdag</span></label>
-              <label class="avond-check"><input type="checkbox" name="avond" value="Donderdag"><span>Donderdag</span></label>
-              <label class="avond-check"><input type="checkbox" name="avond" value="Vrijdag"><span>Vrijdag</span></label>
-            </div>
           </div>
 
           <div class="form-group">

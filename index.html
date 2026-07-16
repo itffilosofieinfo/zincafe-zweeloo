@@ -1220,12 +1220,11 @@
                 <h2>Waar praten we over?</h2>
                 <p style="max-width:580px;">Geen abstracte theorie, maar vragen die je zelf herkent. Een kleine greep:</p>
                 <div class="vragen-grid">
-                    <div class="vraag-item">Wat maakt een leven betekenisvol?</div>
-                    <div class="vraag-item">Wanneer voel je je echt vrij?</div>
-                    <div class="vraag-item">Is geluk iets dat je kunt kiezen?</div>
-                    <div class="vraag-item">Wat betekent vriendschap?</div>
-                    <div class="vraag-item">Hoe ga je om met verlies?</div>
-                    <div class="vraag-item">Wanneer doe je het goed genoeg?</div>
+                    <div class="vraag-item">Zin krijgen of zin geven — wat maakt het leven de moeite waard?</div>
+                    <div class="vraag-item">Gebeurtenissen die alles anders maken — wat was jouw moment?</div>
+                    <div class="vraag-item">Wat betekent het om een persoon te zijn — wie ben jij?</div>
+                    <div class="vraag-item">Is er meer tussen hemel en aarde — waarop bouw jij je leven?</div>
+                    <div class="vraag-item">Geluk of gelukt — valt geluk je toe, of zoek je het?</div>
                 </div>
             </div>
         </section>
@@ -1327,8 +1326,8 @@
                 <!-- Nieuw seizoen 2026–2027 -->
                 <h2>Seizoen 2026–2027</h2>
                 <div class="groepen-uitleg" style="margin-bottom:2rem;">
-                    <h3>📅 Nieuw seizoen in voorbereiding</h3>
-                    <p>De onderwerpen en data voor het seizoen 2026–2027 worden binnenkort bekendgemaakt. Meld je alvast aan via het formulier hieronder — we nemen contact op zodra alles definitief is.</p>
+                    <h3>💡 Hoe werken de groepen?</h3>
+                    <p>We werken met twee parallelle groepen die hetzelfde programma doorlopen. <strong>Groep 1</strong> komt op <strong>dinsdagen</strong>, <strong>Groep 2</strong> op <strong>donderdagen</strong>. Je meldt je aan voor één groep inclusief alle vijf avonden.</p>
                 </div>
                 <div id="nieuwSeizoenContainer"></div>
 
@@ -1355,7 +1354,7 @@
             <div class="section-inner" style="text-align: center;">
                 <h2>Aanmelden voor nieuw seizoen</h2>
                 <p style="max-width: 540px; margin: 1.25rem auto 2.5rem;">
-                    De aanmeldingen voor het nieuwe seizoen van het Zincafé (vijf avonden) en Filosofie in Vogelvlucht (twee avonden) zijn geopend. Meld je aan en wij nemen contact met je op zodra de data definitief zijn.
+                    De aanmeldingen voor het nieuwe seizoen zijn geopend. Meld je aan voor het Zincafé (vijf avonden, groep naar keuze) of Filosofie in Vogelvlucht (twee avonden).
                 </p>
                 <a href="aanmelden.html" class="btn-submit" style="display:inline-block; text-decoration:none; padding: 1rem 3rem; font-size: 1.05rem;">
                     Naar het aanmeldformulier →
@@ -1487,53 +1486,60 @@
         ];
 
         // ── DATA: NIEUW SEIZOEN 2026–2027 ──
-        // Vul hieronder de onderwerpen en data in zodra ze definitief zijn.
-        // Laat 'titel' leeg om een placeholder te tonen.
-        // Laat 'datum' leeg (null) zolang de datum nog niet bekend is.
         const nieuwSeizoen = [
             {
                 nummer: 1,
-                titel: "",        // bijv. "Vertrouwen"
-                beschrijving: "", // bijv. "Over vertrouwen in jezelf en anderen."
+                titel: "Zin krijgen of zin geven",
+                tagline: "Wat maakt het leven de moeite waard?",
+                beschrijving: "Zingevingsvragen zijn vragen die te maken hebben met het geven van betekenis aan jouw leven. Bij deze vraag zien we vaak twee posities: is het zin geven of zin krijgen? En doe je het alleen of heb je er anderen bij nodig?",
+                openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: null, status: "binnenkort" },
-                    { groep: 2, datum: null, status: "binnenkort" }
+                    { groep: 1, datum: "2026-11-10T19:30", status: "beschikbaar" },
+                    { groep: 2, datum: "2026-11-12T19:30", status: "beschikbaar" }
                 ]
             },
             {
                 nummer: 2,
-                titel: "",
-                beschrijving: "",
+                titel: "Gebeurtenissen die een verandering bewerkstelligen",
+                tagline: "Er zijn momenten die alles anders maken. Wat was jouw gebeurtenis — en welke betekenis bevat die?",
+                beschrijving: "Soms worden mensen geconfronteerd met iets dat het begrijpen te boven gaat.",
+                openingsvraag: "Wanneer veranderde er iets in jou wat niet meer terug te draaien was?",
                 momenten: [
-                    { groep: 1, datum: null, status: "binnenkort" },
-                    { groep: 2, datum: null, status: "binnenkort" }
+                    { groep: 1, datum: "2026-12-15T19:30", status: "beschikbaar" },
+                    { groep: 2, datum: "2026-12-17T19:30", status: "beschikbaar" }
                 ]
             },
             {
                 nummer: 3,
-                titel: "",
-                beschrijving: "",
+                titel: "Wat betekent het om een persoon te zijn?",
+                tagline: "Jouw zelfbeeld is niet alleen van jou. Wie heeft jou verteld wie je bent — en geloof je het?",
+                beschrijving: "Wie ben jij?",
+                openingsvraag: "Vertel eens wie of wat je bent?",
                 momenten: [
-                    { groep: 1, datum: null, status: "binnenkort" },
-                    { groep: 2, datum: null, status: "binnenkort" }
+                    { groep: 1, datum: "2027-01-19T19:30", status: "beschikbaar" },
+                    { groep: 2, datum: "2027-01-21T19:30", status: "beschikbaar" }
                 ]
             },
             {
                 nummer: 4,
-                titel: "",
-                beschrijving: "",
+                titel: "Is er meer tussen hemel en aarde?",
+                tagline: "Iedereen gelooft iets — ook wie nergens in gelooft. Waarop bouw jij je leven?",
+                beschrijving: "Waarin geloof jij?",
+                openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: null, status: "binnenkort" },
-                    { groep: 2, datum: null, status: "binnenkort" }
+                    { groep: 1, datum: "2027-02-16T19:30", status: "beschikbaar" },
+                    { groep: 2, datum: "2027-02-18T19:30", status: "beschikbaar" }
                 ]
             },
             {
                 nummer: 5,
-                titel: "",
+                titel: "Geluk of gelukt?",
+                tagline: "Op zoek naar geluk of valt geluk je toe?",
                 beschrijving: "",
+                openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: null, status: "binnenkort" },
-                    { groep: 2, datum: null, status: "binnenkort" }
+                    { groep: 1, datum: "2027-03-16T19:30", status: "beschikbaar" },
+                    { groep: 2, datum: "2027-03-18T19:30", status: "beschikbaar" }
                 ]
             }
         ];
@@ -1635,6 +1641,7 @@
                     }).join('');
                     card.innerHTML = `
                         <h3>${b.nummer}. ${b.titel}</h3>
+                        ${b.tagline ? `<p style="font-style:italic;color:var(--oranje-donker);margin-bottom:0.5rem;font-size:0.95rem;">${b.tagline}</p>` : ''}
                         ${b.beschrijving ? `<p class="thema-beschrijving">${b.beschrijving}</p>` : ''}
                         <div class="groep-momenten">${momentenHTML}</div>`;
                 } else {
