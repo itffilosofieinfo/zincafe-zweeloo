@@ -702,14 +702,14 @@
                 <h2>Praktische informatie</h2>
                 <div class="praktisch-grid">
                     <div class="praktisch-item">
-                        <span class="icon">📖</span>
-                        <strong>Opzet</strong>
-                        <p>Twee avonden, data worden binnenkort bekendgemaakt</p>
+                        <span class="icon">📅</span>
+                        <strong>Data</strong>
+                        <p>Maandag 26 oktober &amp; maandag 2 november 2026</p>
                     </div>
                     <div class="praktisch-item">
                         <span class="icon">🕣</span>
                         <strong>Tijd</strong>
-                        <p>19:30 – 21:30 uur</p>
+                        <p>Inloop 19:15 · aanvang 19:30 – 21:30 uur</p>
                     </div>
                     <div class="praktisch-item">
                         <span class="icon">📍</span>
@@ -730,7 +730,7 @@
             <div class="section-inner">
                 <h2>Aanmelden voor Filosofie in Vogelvlucht</h2>
                 <p style="text-align: center; margin-bottom: 2rem;">
-                    De aanmeldingen voor het komende seizoen zijn geopend. Vul het formulier in en wij nemen contact met je op zodra de data definitief zijn.
+                    De aanmeldingen voor het komende seizoen zijn geopend. Vul het formulier in en we bevestigen je aanmelding.
                 </p>
                 <div class="aanmeld-form">
                     <form id="aanmeldFormFiV" action="https://formspree.io/f/mwpakbbq" method="POST">
@@ -747,16 +747,7 @@
                             <label for="telefoon">Telefoonnummer (optioneel)</label>
                             <input type="tel" id="telefoon" name="telefoon">
                         </div>
-                        <div class="form-group">
-                            <label>Voorkeur avonden <span style="font-weight:400;color:var(--text-light)">(meerdere mogelijk)</span></label>
-                            <div class="avond-checkboxes">
-                                <label class="avond-check"><input type="checkbox" name="avond" value="Maandag"><span>Maandag</span></label>
-                                <label class="avond-check"><input type="checkbox" name="avond" value="Dinsdag"><span>Dinsdag</span></label>
-                                <label class="avond-check"><input type="checkbox" name="avond" value="Woensdag"><span>Woensdag</span></label>
-                                <label class="avond-check"><input type="checkbox" name="avond" value="Donderdag"><span>Donderdag</span></label>
-                                <label class="avond-check"><input type="checkbox" name="avond" value="Vrijdag"><span>Vrijdag</span></label>
-                            </div>
-                        </div>
+                        <input type="hidden" name="avonden" value="Maandag 26 oktober & maandag 2 november 2026">
                         <div class="form-group">
                             <label for="opmerking">Eventuele vragen of opmerkingen</label>
                             <textarea id="opmerking" name="opmerking" placeholder="Bijv. iemand meenemen, vraag over de inhoud, etc."></textarea>
