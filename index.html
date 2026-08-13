@@ -824,6 +824,7 @@
 
         .status-vol        { background: rgba(200,112,58,0.12); color: var(--oranje-donker); }
         .status-beschikbaar{ background: rgba(46,138,80,0.1); color: #2E7A4F; }
+        .status-bijna-vol  { background: rgba(201,125,16,0.12); color: #b36a00; }
         .status-binnenkort { background: var(--blauw-tint); color: var(--blauw); }
         .status-geweest    { background: #F0F0F0; color: var(--text-light); }
 
@@ -1494,8 +1495,8 @@
                 beschrijving: "Zingevingsvragen zijn vragen die te maken hebben met het geven van betekenis aan jouw leven. Bij deze vraag zien we vaak twee posities: is het zin geven of zin krijgen? En doe je het alleen of heb je er anderen bij nodig?",
                 openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: "2026-11-10T19:30", status: "beschikbaar" },
-                    { groep: 2, datum: "2026-11-12T19:30", status: "beschikbaar" }
+                    { groep: 1, datum: "2026-11-10T19:30", status: "bijna-vol" },
+                    { groep: 2, datum: "2026-11-12T19:30", status: "bijna-vol" }
                 ]
             },
             {
@@ -1505,8 +1506,8 @@
                 beschrijving: "Soms worden mensen geconfronteerd met iets dat het begrijpen te boven gaat.",
                 openingsvraag: "Wanneer veranderde er iets in jou wat niet meer terug te draaien was?",
                 momenten: [
-                    { groep: 1, datum: "2026-12-15T19:30", status: "beschikbaar" },
-                    { groep: 2, datum: "2026-12-17T19:30", status: "beschikbaar" }
+                    { groep: 1, datum: "2026-12-15T19:30", status: "bijna-vol" },
+                    { groep: 2, datum: "2026-12-17T19:30", status: "bijna-vol" }
                 ]
             },
             {
@@ -1516,8 +1517,8 @@
                 beschrijving: "Wie ben jij?",
                 openingsvraag: "Vertel eens wie of wat je bent?",
                 momenten: [
-                    { groep: 1, datum: "2027-01-19T19:30", status: "beschikbaar" },
-                    { groep: 2, datum: "2027-01-21T19:30", status: "beschikbaar" }
+                    { groep: 1, datum: "2027-01-19T19:30", status: "bijna-vol" },
+                    { groep: 2, datum: "2027-01-21T19:30", status: "bijna-vol" }
                 ]
             },
             {
@@ -1527,8 +1528,8 @@
                 beschrijving: "Waarin geloof jij?",
                 openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: "2027-02-16T19:30", status: "beschikbaar" },
-                    { groep: 2, datum: "2027-02-18T19:30", status: "beschikbaar" }
+                    { groep: 1, datum: "2027-02-16T19:30", status: "bijna-vol" },
+                    { groep: 2, datum: "2027-02-18T19:30", status: "bijna-vol" }
                 ]
             },
             {
@@ -1538,8 +1539,8 @@
                 beschrijving: "",
                 openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: "2027-03-16T19:30", status: "beschikbaar" },
-                    { groep: 2, datum: "2027-03-18T19:30", status: "beschikbaar" }
+                    { groep: 1, datum: "2027-03-16T19:30", status: "bijna-vol" },
+                    { groep: 2, datum: "2027-03-18T19:30", status: "bijna-vol" }
                 ]
             }
         ];
@@ -1631,7 +1632,7 @@
                     card.className = 'bijeenkomst-card';
                     const momentenHTML = b.momenten.map(moment => {
                         const status = moment.datum ? getStatus(moment) : 'binnenkort';
-                        const labels = { vol: 'Vol', beschikbaar: 'Beschikbaar', binnenkort: 'Binnenkort', geweest: 'Geweest' };
+                        const labels = { vol: 'Vol', beschikbaar: 'Beschikbaar', 'bijna-vol': 'Bijna vol', binnenkort: 'Binnenkort', geweest: 'Geweest' };
                         return `
                             <div class="groep-moment">
                                 <span class="groep-label">Groep ${moment.groep}</span>
