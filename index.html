@@ -506,7 +506,7 @@
         /* ── DRIE PRODUCTEN KAARTJES ── */
         .producten-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -1177,15 +1177,13 @@
         <!-- ── DRIE PRODUCTEN ── -->
         <div class="producten-grid">
             <div class="product-card">
-                <span class="product-icon">☕</span>
-                <span class="product-badge grijs">Seizoen 2025–2026 afgerond · nieuw seizoen volgt</span>
+                <span class="product-badge groen">✅ Aanmeldingen open · seizoen 2026–2027</span>
                 <h3>Zincafé Zweeloo</h3>
                 <p>Kleinschalige filosofische gesprekken over zingeving — voor iedereen in en rondom Zweeloo, gratis toegankelijk.</p>
                 <a href="#bijeenkomsten" class="product-link">Bekijk de bijeenkomsten →</a>
             </div>
 
             <div class="product-card">
-                <span class="product-icon">📖</span>
                 <span class="product-badge groen">✅ Aanmeldingen open · nieuw seizoen</span>
                 <h3>Filosofie in Vogelvlucht</h3>
                 <p>Twee avonden over de grote vragen van de westerse filosofie. Van Aristoteles tot Žižek. <em>Aanmeldingen voor het nieuwe seizoen zijn open!</em></p>
@@ -1193,10 +1191,16 @@
             </div>
 
             <div class="product-card">
-                <span class="product-icon">🎙️</span>
                 <span class="product-badge groen">🎙️ Nu te beluisteren</span>
                 <h3>Podcast Filosofiecafé Emmen</h3>
                 <p>Sjoerd en Nathalie zijn te gast in de podcast van het Filosofiecafé Emmen — over zingeving, filosofie en grote vragen in een kleine gemeenschap.</p>
+            </div>
+
+            <div class="product-card">
+                <span class="product-badge groen">🚶 Eerste wandeling: 12 september</span>
+                <h3>Walk of Life</h3>
+                <p>Nathalie is sinds kort wandelcoach bij Walk of Life: samen buiten wandelen, ontmoeten en opladen. Dezelfde aandacht voor elkaar als bij het Zincafé, maar dan onderweg.</p>
+                <a href="https://walkoflife.nl/coach/nathalie-van-hooff/" target="_blank" rel="noopener" class="product-link">Meer info en aanmelden →</a>
             </div>
         </div>
 
