@@ -1197,7 +1197,7 @@
             </div>
 
             <div class="product-card">
-                <span class="product-badge groen">🚶 Eerste wandeling: 12 september</span>
+                <span class="product-badge groen">🚶 Wandelingen: 10, 11 &amp; 12 oktober</span>
                 <h3>Walk of Life</h3>
                 <p>Nathalie is sinds kort wandelcoach bij Walk of Life: samen buiten wandelen, ontmoeten en opladen. Dezelfde aandacht voor elkaar als bij het Zincafé, maar dan onderweg.</p>
                 <a href="https://walkoflife.nl/coach/nathalie-van-hooff/" target="_blank" rel="noopener" class="product-link">Meer info en aanmelden →</a>
@@ -1499,8 +1499,8 @@
                 beschrijving: "Zingevingsvragen zijn vragen die te maken hebben met het geven van betekenis aan jouw leven. Bij deze vraag zien we vaak twee posities: is het zin geven of zin krijgen? En doe je het alleen of heb je er anderen bij nodig?",
                 openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: "2026-11-10T19:30", status: "bijna-vol" },
-                    { groep: 2, datum: "2026-11-12T19:30", status: "bijna-vol" }
+                    { groep: 1, datum: "2026-11-10T19:30", status: "vol" },
+                    { groep: 2, datum: "2026-11-12T19:30", status: "vol" }
                 ]
             },
             {
@@ -1510,8 +1510,8 @@
                 beschrijving: "Soms worden mensen geconfronteerd met iets dat het begrijpen te boven gaat.",
                 openingsvraag: "Wanneer veranderde er iets in jou wat niet meer terug te draaien was?",
                 momenten: [
-                    { groep: 1, datum: "2026-12-15T19:30", status: "bijna-vol" },
-                    { groep: 2, datum: "2026-12-17T19:30", status: "bijna-vol" }
+                    { groep: 1, datum: "2026-12-15T19:30", status: "vol" },
+                    { groep: 2, datum: "2026-12-17T19:30", status: "vol" }
                 ]
             },
             {
@@ -1521,8 +1521,8 @@
                 beschrijving: "Wie ben jij?",
                 openingsvraag: "Vertel eens wie of wat je bent?",
                 momenten: [
-                    { groep: 1, datum: "2027-01-19T19:30", status: "bijna-vol" },
-                    { groep: 2, datum: "2027-01-21T19:30", status: "bijna-vol" }
+                    { groep: 1, datum: "2027-01-19T19:30", status: "vol" },
+                    { groep: 2, datum: "2027-01-21T19:30", status: "vol" }
                 ]
             },
             {
@@ -1532,8 +1532,8 @@
                 beschrijving: "Waarin geloof jij?",
                 openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: "2027-02-16T19:30", status: "bijna-vol" },
-                    { groep: 2, datum: "2027-02-18T19:30", status: "bijna-vol" }
+                    { groep: 1, datum: "2027-02-16T19:30", status: "vol" },
+                    { groep: 2, datum: "2027-02-18T19:30", status: "vol" }
                 ]
             },
             {
@@ -1543,8 +1543,8 @@
                 beschrijving: "",
                 openingsvraag: "",
                 momenten: [
-                    { groep: 1, datum: "2027-03-16T19:30", status: "bijna-vol" },
-                    { groep: 2, datum: "2027-03-18T19:30", status: "bijna-vol" }
+                    { groep: 1, datum: "2027-03-16T19:30", status: "vol" },
+                    { groep: 2, datum: "2027-03-18T19:30", status: "vol" }
                 ]
             }
         ];
@@ -1586,16 +1586,32 @@
         }
 
         function updateNextEventBanner() {
-            // Zoek eerstvolgende in het nieuwe seizoen
+            // FiV als aparte kandidaten meenemen
+            const fivKandidaten = [
+                { titel: "Filosofie in Vogelvlucht", datum: "2026-10-26T19:30", type: "fiv" },
+                { titel: "Filosofie in Vogelvlucht", datum: "2026-11-02T19:30", type: "fiv" }
+            ];
+
             let eerstvolgende = null;
             let vroegsteDatum = null;
+
+            fivKandidaten.forEach(k => {
+                if (!isDatumGeweest(k.datum)) {
+                    const datum = new Date(k.datum);
+                    if (!vroegsteDatum || datum < vroegsteDatum) {
+                        vroegsteDatum = datum;
+                        eerstvolgende = k;
+                    }
+                }
+            });
+
             nieuwSeizoen.forEach(b => {
                 b.momenten.forEach(m => {
                     if (m.datum && !isDatumGeweest(m.datum)) {
                         const datum = new Date(m.datum);
                         if (!vroegsteDatum || datum < vroegsteDatum) {
                             vroegsteDatum = datum;
-                            eerstvolgende = { titel: b.titel, datum: m.datum, groep: m.groep };
+                            eerstvolgende = { titel: b.titel, datum: m.datum, groep: m.groep, type: "zincafe" };
                         }
                     }
                 });
@@ -1603,9 +1619,13 @@
 
             const titleEl = document.getElementById('nextEventTitle');
             const detailsEl = document.getElementById('nextEventDetails');
-            if (eerstvolgende && eerstvolgende.titel) {
+            if (eerstvolgende) {
                 titleEl.textContent = `🗓️ Eerstvolgende bijeenkomst: ${formateerDatum(eerstvolgende.datum).split(',')[0]}`;
-                detailsEl.textContent = `Groep ${eerstvolgende.groep} · ${eerstvolgende.titel} · 19:30 uur`;
+                if (eerstvolgende.type === 'fiv') {
+                    detailsEl.textContent = `Filosofie in Vogelvlucht · inloop 19:15, aanvang 19:30 uur`;
+                } else {
+                    detailsEl.textContent = `Groep ${eerstvolgende.groep} · ${eerstvolgende.titel} · 19:30 uur`;
+                }
             } else {
                 titleEl.textContent = "Seizoen 2026–2027 in voorbereiding";
                 detailsEl.textContent = "Onderwerpen en data worden binnenkort bekendgemaakt — meld je alvast aan!";
@@ -1662,6 +1682,7 @@
 
         function initFormulier() {
             const form = document.getElementById('aanmeldForm');
+            if (!form) return;
             const formStatus = document.getElementById('formStatus');
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();

@@ -101,8 +101,11 @@
   <section class="wit">
     <div class="section-inner">
       <h2>Aanmelden voor het nieuwe seizoen</h2>
-      <p style="text-align:center; max-width:560px; margin:0 auto 0.5rem;">
-        Meld je aan voor het Zincafé of Filosofie in Vogelvlucht. De aanmeldingen voor het nieuwe seizoen zijn open.
+      <p style="text-align:center; max-width:580px; margin:0 auto 0.25rem;">
+        Filosofie in Vogelvlucht heeft nog ruimte — meld je aan!
+      </p>
+      <p style="text-align:center; max-width:580px; margin:0 auto 0.75rem; font-size:0.9rem; color:var(--text-light);">
+        De Zincafé-groepen zijn vol. Je kunt je wel aanmelden voor de <strong>wachtlijst</strong> — bij uitval nemen we contact met je op.
       </p>
       <div class="aanmeld-form">
         <form id="aanmeldForm" action="https://formspree.io/f/mwpakbbq" method="POST">
@@ -111,16 +114,17 @@
             <label for="activiteit">Waarvoor wil je je aanmelden? *</label>
             <select id="activiteit" name="activiteit" required>
               <option value="">— Maak een keuze —</option>
-              <optgroup label="Zincafé Zweeloo — vijf avonden">
-                <option value="Zincafé – Groep 1 (dinsdagen)">Zincafé – Groep 1 · dinsdagen (10 nov, 15 dec, 19 jan, 16 feb, 16 mrt)</option>
-                <option value="Zincafé – Groep 2 (donderdagen)">Zincafé – Groep 2 · donderdagen (12 nov, 17 dec, 21 jan, 18 feb, 18 mrt)</option>
-              </optgroup>
               <optgroup label="Filosofie in Vogelvlucht — twee avonden">
                 <option value="Filosofie in Vogelvlucht (ma 26 okt &amp; ma 2 nov)">Filosofie in Vogelvlucht · ma 26 oktober &amp; ma 2 november</option>
               </optgroup>
-              <option value="Zincafé én Filosofie in Vogelvlucht – Groep 1">Beide · Groep 1 (dinsdagen + FiV)</option>
-              <option value="Zincafé én Filosofie in Vogelvlucht – Groep 2">Beide · Groep 2 (donderdagen + FiV)</option>
+              <optgroup label="Zincafé Zweeloo — wachtlijst (vol)">
+                <option value="Wachtlijst Zincafé – Groep 1 (dinsdagen)">Wachtlijst Zincafé – Groep 1 · dinsdagen (10 nov, 15 dec, 19 jan, 16 feb, 16 mrt)</option>
+                <option value="Wachtlijst Zincafé – Groep 2 (donderdagen)">Wachtlijst Zincafé – Groep 2 · donderdagen (12 nov, 17 dec, 21 jan, 18 feb, 18 mrt)</option>
+              </optgroup>
             </select>
+          </div>
+          <div id="wachtlijstInfo" style="display:none; background:rgba(200,112,58,0.1); border-radius:8px; padding:0.75rem 1rem; font-size:0.875rem; color:var(--oranje-donker); margin-bottom:1rem;">
+            Je plaatst je op de <strong>wachtlijst</strong> voor het Zincafé. We nemen contact op als er een plek vrij komt.
           </div>
 
           <div class="form-group">
@@ -180,10 +184,9 @@
 
 <script>
   const activiteitSel = document.getElementById('activiteit');
-  const avondWrap = document.getElementById('avondWrap');
   activiteitSel.addEventListener('change', function() {
-    const toonAvond = this.value !== '' && this.value !== 'Op de hoogte houden';
-    avondWrap.style.display = toonAvond ? 'block' : 'none';
+    const isWachtlijst = this.value.startsWith('Wachtlijst');
+    document.getElementById('wachtlijstInfo').style.display = isWachtlijst ? 'block' : 'none';
   });
 
   document.getElementById('aanmeldForm').addEventListener('submit', async function(e) {
